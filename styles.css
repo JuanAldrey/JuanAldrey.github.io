@@ -236,6 +236,7 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
   .hero { padding-block: 90px; }
   .signal-card { max-width: 620px; }
   .section-heading, .case-section { grid-template-columns: 1fr; }
+  .about { grid-template-columns: minmax(220px, .75fr) minmax(0, 1.25fr); gap: 36px; }
   .section-heading .eyebrow { grid-row: auto; }
   .project-card { grid-template-columns: 1fr; }
   .practice-grid { grid-template-columns: 1fr; }
