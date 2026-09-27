@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Room Modal Optimizer — frequency-domain FEM, MSFD and genetic optimization for small-room acoustics. A project by Juan Aldrey, Tomás Díaz, Álvaro Lobo and Joaquín Varela.">
+    <meta name="theme-color" content="#0a0c10">
+    <title>Room Modal Optimizer — Juan Aldrey</title>
+    <link rel="stylesheet" href="../../styles.css?v=20260927i">
+    <script src="../../script.js" defer></script>
+  </head>
+  <body id="top" class="project-page modal-page">
+    <header class="site-header">
+      <a class="brand" href="../../" aria-label="Juan Aldrey, home"><span class="brand-mark">JA</span><span class="brand-label">audio systems</span></a>
+      <a class="back-link" href="../../">← All work</a>
+    </header>
+
+    <main>
+      <section class="project-hero section-shell">
+        <div class="project-hero-copy reveal">
+          <p class="eyebrow">02 / Computational acoustics</p>
+          <h1>Room Modal Optimizer</h1>
+          <p class="project-lead">A tool for comparing and improving low-frequency sound fields in small rooms. It combines direct frequency-domain FEM, a spatial and spectral metric, and genetic optimization of room geometry.</p>
+          <p class="project-role">I led the four-person team and programmed the entire computational backend. Joaquín Varela developed the associated GUI.</p>
+          <div class="project-actions"><a class="button button-primary" href="https://github.com/JuanAldrey/room-modal-optimizer" target="_blank" rel="noreferrer">Explore the code ↗</a></div>
+        </div>
+        <div class="modal-hero-side reveal">
+          <div class="modal-hero-mark" aria-hidden="true"><span>GEOMETRY</span><span>→</span><span>RESPONSE</span><span>→</span><span>OPTIMIZATION</span></div>
+          <dl class="project-facts">
+            <div><dt>Team</dt><dd>Juan Aldrey<br>Tomás Díaz<br>Álvaro Lobo<br>Joaquín Varela</dd></div>
+            <div><dt>Focus</dt><dd>Small-room acoustics<br>20–200 Hz</dd></div>
+            <div><dt>Methods</dt><dd>Gmsh · FEM<br>MSFD · genetic algorithm</dd></div>
+            <div><dt>Status</dt><dd>Course project<br>Paper draft in revision</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="case-section section-shell">
+        <div class="case-label reveal"><p class="eyebrow">The problem</p><span>01</span></div>
+        <div class="case-copy reveal">
+          <h2>Room dimensions tell only part of the story.</h2>
+          <p>At low frequencies, resonances and cancellations depend on the room's shape and on where the source and listeners are placed. A favorable dimensional ratio alone cannot describe the responses across an actual listening area, especially for non-rectangular rooms.</p>
+          <p>We built a local tool that evaluates candidate rooms through simulated source–receiver responses. Its objective is to reduce Mean Sound Field Deviation (MSFD), which combines spectral variation at each listening position with variation between positions.</p>
+        </div>
+      </section>
+
+      <section class="signal-flow-section section-block">
+        <div class="section-shell">
+          <div class="section-heading reveal"><p class="eyebrow">Method</p><h2>From geometry to a comparable acoustic score</h2></div>
+          <ol class="modal-flow reveal" aria-label="Room evaluation and optimization workflow">
+            <li><span>01</span><strong>Candidate geometry</strong><p>Change admissible room dimensions and vertices; hold the source and audience area fixed for the comparison.</p></li>
+            <li><span>02</span><strong>Mesh + direct FEM</strong><p>Generate a 3D mesh and solve the forced acoustic field across the frequency range.</p></li>
+            <li><span>03</span><strong>Receiver responses</strong><p>Sample the computed fields on a grid of listening positions.</p></li>
+            <li><span>04</span><strong>MSFD evaluation</strong><p>Find the best admissible receiver combination and score the geometry without rerunning FEM for each combination.</p></li>
+            <li><span>05</span><strong>Genetic search</strong><p>Use the score to guide the next candidate geometry, then repeat the evaluation.</p></li>
+          </ol>
+          <p class="flow-note reveal">The genetic algorithm explores geometry; receiver selection is performed within each candidate's already simulated sound field.</p>
+        </div>
+      </section>
+
+      <section class="case-section section-shell">
+        <div class="case-label reveal"><p class="eyebrow">Checks</p><span>02</span></div>
+        <div class="case-copy reveal">
+          <h2>Three checks shaped the method.</h2>
+          <div class="modal-checks">
+            <article><span>01 / External comparison</span><h3>BRAS CR2 benchmark</h3><p>Measured and simulated responses for ten source–receiver pairs were compared over 20–200 Hz. The mean correlation was about 0.70 for second-order FEM: a semiquantitative check of broad spectral trends, not a claim of exact prediction.</p></article>
+            <article><span>02 / Numerical choice</span><h3>First versus second order</h3><p>First-order FEM preserved the MSFD ranking of the second-order reference across the tested cases (mean Spearman correlation 0.97), supporting a less costly solver for the search.</p></article>
+            <article><span>03 / Listening positions</span><h3>Receiver placement matters</h3><p>In the same room and audience area, admissible four-receiver sets ranged from 6.219 to 4.496 dB MSFD. The geometry alone did not determine the listening-area score.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="modal-results section-block" id="results">
+        <div class="section-shell">
+          <div class="section-heading reveal"><p class="eyebrow">Main result / 04</p><h2>Genetic search versus an exhaustive grid</h2></div>
+          <p class="modal-results-intro reveal">Starting from a symmetric 5 × 4 × 3 m room, both methods searched the same allowed geometric ranges and used the same FEM and MSFD evaluation. The exhaustive search tested 4,375 grid configurations; the genetic algorithm explored continuous values within those ranges.</p>
+          <div class="modal-result-grid reveal">
+            <div class="modal-table-wrap">
+              <table class="modal-table">
+                <caption>Best outcome in the reported experiment</caption>
+                <thead><tr><th scope="col">Case</th><th scope="col">MSFD</th><th scope="col">Time</th><th scope="col">Improvement</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Base room</th><td>4.74 dB</td><td>—</td><td>—</td></tr>
+                  <tr><th scope="row">Exhaustive grid</th><td>2.62 dB</td><td>16 h 46 min</td><td>2.12 dB</td></tr>
+                  <tr class="modal-best"><th scope="row">Genetic algorithm</th><td>2.48 dB</td><td>56.62 min</td><td>2.26 dB</td></tr>
+                </tbody>
+              </table>
+              <p>Both searches found similar symmetric trapezoidal rooms and selected the same receiver combination. The genetic run found a slightly lower MSFD in much less time in this experiment. Its continuous search and the grid's discrete sampling matter when interpreting that comparison.</p>
+            </div>
+            <figure class="modal-result-figure"><img src="../../assets/images/modal-geometry-comparison.jpg" alt="Plan views comparing the best symmetric trapezoidal room geometries from exhaustive grid search and genetic optimization" loading="lazy"><figcaption>Best geometries found by the exhaustive grid and genetic search. Source, audience area and selected receivers are marked.</figcaption></figure>
+          </div>
+          <figure class="modal-convergence reveal"><img src="../../assets/images/modal-ga-convergence.jpg" alt="Fitness rising over the genetic algorithm generations and then stabilizing" loading="lazy"><figcaption>Fitness improved rapidly in early generations and stabilized later in the run.</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="report-section section-block">
+        <div class="section-shell"><div class="report-callout reveal">
+          <div><p class="eyebrow">Documentation</p><h3>Code and research draft</h3><p>The source code is available now. The JAAS paper is being revised, so the current draft is not presented here as a published paper.</p></div>
+          <a class="button button-primary" href="https://github.com/JuanAldrey/room-modal-optimizer" target="_blank" rel="noreferrer">View repository ↗</a>
+        </div></div>
+      </section>
+      <nav class="project-pagination section-shell" aria-label="Project navigation">
+        <a href="../harmonic-tremolo/"><span>← Previous project</span><strong>Analog Harmonic Tremolo</strong></a>
+        <a href="../../"><span>Back to portfolio</span><strong>Selected work</strong></a>
+      </nav>
+    </main>
+    <footer class="site-footer section-shell"><div><span class="brand-mark">JA</span><p>Audio DSP · Acoustics · Embedded systems</p></div><div class="footer-links"><a href="https://github.com/JuanAldrey" target="_blank" rel="noreferrer">GitHub ↗</a><a href="#top">Back to top ↑</a></div><p class="copyright">© <span data-year></span> Juan Aldrey</p></footer>
+  </body>
+</html>
