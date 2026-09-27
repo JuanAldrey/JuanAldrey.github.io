@@ -115,6 +115,8 @@ h3 { font-size: clamp(1.6rem, 2.6vw, 2.5rem); font-weight: 580; }
 .live-label { color: var(--accent); }
 .grid-line { fill: none; stroke: rgba(102,230,191,.1); stroke-width: 1; }
 .signal-line { fill: none; stroke: url(#signalFade); stroke-width: 2.2; vector-effect: non-scaling-stroke; filter: drop-shadow(0 0 6px rgba(102,230,191,.6)); }
+.profile-photo { margin: 20px 0 0; overflow: hidden; border: 1px solid var(--line); }
+.profile-photo img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 45%; }
 .profile-grid { margin: 0; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
 .profile-grid div { padding: 18px 10px 4px; border-bottom: 1px solid var(--line); }
 .profile-grid div:nth-child(odd) { border-right: 1px solid var(--line); }
