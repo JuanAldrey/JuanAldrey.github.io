@@ -130,7 +130,7 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
 #work { padding-top: clamp(56px, 5vw, 76px); }
 
 .project-card { display: grid; grid-template-columns: 1.15fr .85fr; min-height: 560px; background: var(--bg-elevated); border: 1px solid var(--line); overflow: hidden; transition: border-color .25s ease, transform .25s ease; }
-.project-carousel-track { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; overscroll-behavior-x: contain; }
+.project-carousel-track { display: flex; gap: 24px; overflow: hidden; scroll-behavior: smooth; }
 .project-carousel-track::-webkit-scrollbar { display: none; }
 .project-carousel-track .project-card { flex: 0 0 100%; scroll-snap-align: start; }
 .project-carousel-controls { display: flex; align-items: center; justify-content: space-between; margin-top: 22px; }
