@@ -148,6 +148,7 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
 .project-index { position: absolute; left: 22px; bottom: 14px; color: #0a0c10; font: 700 clamp(3rem, 7vw, 6rem)/1 "SFMono-Regular", Consolas, monospace; opacity: .14; }
 .project-summary { padding: clamp(36px, 6vw, 80px); display: flex; flex-direction: column; justify-content: center; }
 .project-kicker { display: flex; justify-content: space-between; color: var(--accent); margin-bottom: 28px; }
+.project-card-note { align-self: flex-start; margin: -10px 0 22px; padding-left: 12px; border-left: 2px solid var(--accent); color: var(--accent); font: .69rem/1.5 "SFMono-Regular", Consolas, monospace; letter-spacing: .055em; text-transform: uppercase; }
 .project-summary h3 { margin-bottom: 24px; }
 .project-summary > p { color: var(--muted); font-size: 1.05rem; }
 .tag-list { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 26px 0 44px; }
