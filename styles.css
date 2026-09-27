@@ -293,12 +293,15 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
 }
 
 /* Room Modal Optimizer */
-.modal-page .project-hero { align-items: stretch; }
+.modal-page .project-hero { align-items: stretch; padding-bottom: clamp(36px, 5vw, 64px); }
+.modal-page .project-hero + .case-section { padding-top: clamp(54px, 7vw, 90px); }
 .modal-page .project-hero h1 { font-size: clamp(4rem, 8.2vw, 7.3rem); }
 .project-role { color: var(--text); max-width: 700px; border-left: 2px solid var(--accent); padding-left: 20px; margin-top: 30px; }
-.modal-hero-side { align-self: stretch; display: flex; flex-direction: column; justify-content: space-between; gap: 48px; }
-.modal-hero-mark { border: 1px solid var(--line); min-height: 230px; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px; padding: 28px; color: var(--accent); font: .78rem/1.4 "SFMono-Regular", Consolas, monospace; letter-spacing: .04em; }
-.modal-hero-mark span:nth-child(even) { color: var(--faint); }
+.modal-hero-side { align-self: stretch; display: flex; flex-direction: column; justify-content: flex-end; }
+.modal-section-heading .modal-heading-label { display: flex; flex-direction: column; justify-content: space-between; grid-row: 1 / 3; min-height: 120px; }
+.modal-heading-label > span { color: var(--faint); font: 700 clamp(4rem, 9vw, 8rem)/1 "SFMono-Regular", Consolas, monospace; opacity: .28; }
+.modal-section-heading .eyebrow { grid-row: auto; }
+.modal-section-heading h2 { grid-column: 2; }
 .modal-flow { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border: 1px solid var(--line); }
 .modal-flow li { min-width: 0; padding: 25px 18px; border-right: 1px solid var(--line); }
 .modal-flow li:last-child { border-right: 0; }
@@ -311,7 +314,7 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
 .modal-checks h3 { margin: 12px 0; font-size: 1.35rem; }
 .modal-checks p { color: var(--muted); margin: 0; }
 .modal-results { padding-block: clamp(90px, 12vw, 160px); background: var(--bg-elevated); border-block: 1px solid var(--line); }
-.modal-results-intro { color: var(--muted); max-width: 75ch; margin-bottom: 54px; font-size: 1.1rem; }
+.modal-results-intro { color: var(--muted); width: 100%; max-width: none; margin-bottom: 54px; font-size: 1.1rem; }
 .modal-result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px, 5vw, 70px); align-items: start; }
 .modal-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
 .modal-table caption { text-align: left; font-size: 1.25rem; font-weight: 700; margin-bottom: 22px; }
@@ -324,19 +327,23 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
 .modal-result-figure, .modal-convergence { margin: 0; }
 .modal-result-figure img, .modal-convergence img { width: 100%; display: block; background: #fff; }
 .modal-result-figure figcaption, .modal-convergence figcaption { color: var(--muted); font-size: .85rem; padding-top: 14px; }
-.modal-convergence { width: min(620px, 100%); margin: 70px auto 0; }
-.modal-convergence img { height: 350px; object-fit: contain; }
+.modal-convergence-panel { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px, 5vw, 70px); align-items: center; margin-top: 70px; padding-top: 48px; border-top: 1px solid var(--line); }
+.modal-convergence-copy h3 { font-size: clamp(1.7rem, 2.8vw, 2.6rem); margin-bottom: 22px; }
+.modal-convergence-copy p:last-child { color: var(--muted); max-width: 52ch; }
+.modal-convergence img { max-height: 350px; object-fit: contain; }
 .project-pagination:has(a + a) { grid-template-columns: 1fr 1fr; }
 .project-pagination:has(a + a) a:last-child { text-align: right; }
 @media (max-width: 980px) {
   .modal-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .modal-flow li { border-bottom: 1px solid var(--line); }
-  .modal-result-grid { grid-template-columns: 1fr; }
+  .modal-result-grid, .modal-convergence-panel { grid-template-columns: 1fr; }
+  .modal-section-heading .modal-heading-label { min-height: 0; flex-direction: row; align-items: start; }
+  .modal-heading-label > span { font-size: 4rem; }
+  .modal-section-heading h2 { grid-column: 1; }
 }
 @media (max-width: 680px) {
   .modal-flow { grid-template-columns: 1fr; }
   .modal-flow li { border-right: 0; }
-  .modal-hero-mark { min-height: 140px; }
   .modal-table { font-size: .78rem; }
   .modal-table th, .modal-table td { padding: 12px 5px; }
   .project-pagination:has(a + a) { grid-template-columns: 1fr; }
