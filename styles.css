@@ -295,6 +295,14 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
   .practice-card { padding-block: 34px; }
   .practice-icon { margin-bottom: 20px; }
   .hero-actions, .project-actions { align-items: flex-start; flex-direction: column; }
+  #work .project-card { min-height: 0; }
+  #work .project-visual { min-height: 0; aspect-ratio: 16 / 10; padding: 20px; }
+  #work .project-visual img { max-height: 210px; }
+  #work .project-summary { padding: 28px; }
+  #work .project-kicker { margin-bottom: 20px; }
+  #work .project-card-note { margin: 0 0 18px; font-size: .64rem; }
+  #work .project-summary h3 { margin-bottom: 16px; }
+  #work .tag-list { margin: 18px 0 26px; }
   .project-visual { min-height: 320px; }
   .profile-grid { grid-template-columns: 1fr; }
   .profile-grid div:nth-child(odd) { border-right: 0; }
