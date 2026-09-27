@@ -167,6 +167,17 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
 
 /* Project page */
 .project-hero { padding-block: clamp(42px, 5vw, 72px) clamp(70px, 10vw, 120px); display: grid; grid-template-columns: 1.35fr .65fr; gap: 80px; align-items: end; }
+.project-hero-side { align-self: stretch; display: flex; flex-direction: column; justify-content: space-between; gap: 52px; }
+.tremolo-motif { margin: 0; padding: 22px 12px 12px; border: 1px solid var(--line); background: rgba(17,21,27,.4); }
+.tremolo-motif figcaption, .motif-legend { color: var(--faint); font: .68rem/1.4 "SFMono-Regular", Consolas, monospace; letter-spacing: .1em; text-transform: uppercase; }
+.tremolo-motif svg { display: block; width: 100%; height: auto; margin: 16px 0 2px; }
+.motif-guide { fill: none; stroke: rgba(255,255,255,.08); stroke-width: 1; }
+.motif-low, .motif-high { fill: none; stroke-width: 2; vector-effect: non-scaling-stroke; }
+.motif-low { stroke: var(--accent); }
+.motif-high { stroke: var(--warm); }
+.motif-legend { display: flex; justify-content: space-between; }
+.motif-legend span:first-child { color: var(--accent); }
+.motif-legend span:last-child { color: var(--warm); }
 .project-hero h1 { font-size: clamp(4rem, 9vw, 8.2rem); margin-bottom: 30px; }
 .project-lead { color: var(--muted); font-size: clamp(1.2rem, 2vw, 1.55rem); max-width: 820px; line-height: 1.5; }
 .project-facts { margin: 0; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
