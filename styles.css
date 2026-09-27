@@ -290,3 +290,54 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
   .footer-links { flex-direction: column; gap: 10px; }
   .copyright { grid-column: 1; }
 }
+
+/* Room Modal Optimizer */
+.modal-page .project-hero { align-items: stretch; }
+.modal-page .project-hero h1 { font-size: clamp(4rem, 8.2vw, 7.3rem); }
+.project-role { color: var(--text); max-width: 700px; border-left: 2px solid var(--accent); padding-left: 20px; margin-top: 30px; }
+.modal-hero-side { align-self: stretch; display: flex; flex-direction: column; justify-content: space-between; gap: 48px; }
+.modal-hero-mark { border: 1px solid var(--line); min-height: 230px; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px; padding: 28px; color: var(--accent); font: .78rem/1.4 "SFMono-Regular", Consolas, monospace; letter-spacing: .04em; }
+.modal-hero-mark span:nth-child(even) { color: var(--faint); }
+.modal-flow { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border: 1px solid var(--line); }
+.modal-flow li { min-width: 0; padding: 25px 18px; border-right: 1px solid var(--line); }
+.modal-flow li:last-child { border-right: 0; }
+.modal-flow li > span, .modal-checks article > span { color: var(--accent); font: .72rem/1.4 "SFMono-Regular", Consolas, monospace; letter-spacing: .05em; }
+.modal-flow strong { display: block; margin: 20px 0 12px; font-size: 1.1rem; line-height: 1.25; }
+.modal-flow p, .flow-note { color: var(--muted); font-size: .87rem; line-height: 1.55; }
+.flow-note { margin: 22px 0 0; }
+.modal-checks { border-top: 1px solid var(--line); }
+.modal-checks article { padding: 26px 0; border-bottom: 1px solid var(--line); }
+.modal-checks h3 { margin: 12px 0; font-size: 1.35rem; }
+.modal-checks p { color: var(--muted); margin: 0; }
+.modal-results { padding-block: clamp(90px, 12vw, 160px); background: var(--bg-elevated); border-block: 1px solid var(--line); }
+.modal-results-intro { color: var(--muted); max-width: 75ch; margin-bottom: 54px; font-size: 1.1rem; }
+.modal-result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px, 5vw, 70px); align-items: start; }
+.modal-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.modal-table caption { text-align: left; font-size: 1.25rem; font-weight: 700; margin-bottom: 22px; }
+.modal-table th, .modal-table td { text-align: left; border-bottom: 1px solid var(--line); padding: 16px 10px; }
+.modal-table th:first-child, .modal-table td:first-child { padding-left: 0; }
+.modal-table thead { color: var(--faint); font-size: .74rem; }
+.modal-table tbody th { font-weight: 500; }
+.modal-table .modal-best { color: var(--accent); }
+.modal-table-wrap > p { color: var(--muted); line-height: 1.7; margin-top: 34px; }
+.modal-result-figure, .modal-convergence { margin: 0; }
+.modal-result-figure img, .modal-convergence img { width: 100%; display: block; background: #fff; }
+.modal-result-figure figcaption, .modal-convergence figcaption { color: var(--muted); font-size: .85rem; padding-top: 14px; }
+.modal-convergence { width: min(620px, 100%); margin: 70px auto 0; }
+.modal-convergence img { height: 350px; object-fit: contain; }
+.project-pagination:has(a + a) { grid-template-columns: 1fr 1fr; }
+.project-pagination:has(a + a) a:last-child { text-align: right; }
+@media (max-width: 980px) {
+  .modal-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .modal-flow li { border-bottom: 1px solid var(--line); }
+  .modal-result-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .modal-flow { grid-template-columns: 1fr; }
+  .modal-flow li { border-right: 0; }
+  .modal-hero-mark { min-height: 140px; }
+  .modal-table { font-size: .78rem; }
+  .modal-table th, .modal-table td { padding: 12px 5px; }
+  .project-pagination:has(a + a) { grid-template-columns: 1fr; }
+  .project-pagination:has(a + a) a:last-child { text-align: left; }
+}
