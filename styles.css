@@ -130,6 +130,7 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
 #work { padding-top: clamp(56px, 5vw, 76px); }
 
 .project-card { display: grid; grid-template-columns: 1.15fr .85fr; min-height: 560px; background: var(--bg-elevated); border: 1px solid var(--line); overflow: hidden; transition: border-color .25s ease, transform .25s ease; }
+#work .project-card + .project-card { margin-top: 32px; }
 .project-card:hover { border-color: rgba(102,230,191,.55); transform: translateY(-4px); }
 .project-visual { position: relative; display: grid; place-items: center; min-height: 440px; padding: clamp(24px, 5vw, 70px); background: #f2f2ed; overflow: hidden; }
 .project-visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, transparent 60%, rgba(10,12,16,.08)); }
