@@ -55,8 +55,8 @@
           <span>01</span>
         </div>
         <div class="case-copy reveal">
-          <h2>Frequency-dependent amplitude modulation, entirely in analog hardware.</h2>
-          <p>The project explores harmonic tremolo as an electroacoustic system rather than a single broadband amplitude control. The input is separated into two bands, whose levels are alternately reduced to create movement in both amplitude and spectral balance.</p>
+          <h2>Analog two-band tremolo</h2>
+          <p>The circuit splits the guitar signal into low- and high-frequency bands. Their levels vary in opposition, changing both the overall amplitude and the balance between bands.</p>
           <p>The system was organized into two main sections:</p>
           <ol class="numbered-list">
             <li>A control circuit consisting of a low-frequency oscillator (LFO), a depth control stage, a gain stage, and a phase splitter that generates two opposing control signals.</li>
@@ -69,7 +69,7 @@
         <div class="section-shell">
           <div class="section-heading reveal">
             <p class="eyebrow">System architecture</p>
-            <h2>Two paths, one coordinated effect. (MAS NEUTRO)</h2>
+            <h2>Circuit overview</h2>
           </div>
           <div class="flow-grid reveal" aria-label="Simplified signal flow">
             <article class="flow-lane">
@@ -90,54 +90,44 @@
         </div>
       </section>
 
-      <section class="case-section section-shell">
-        <div class="case-label reveal">
-          <p class="eyebrow">Engineering decisions (ESTA SECCION LA SACARIA)</p>
-          <span>02</span>
-        </div>
-        <div class="spec-grid reveal">
-          <article><strong>1–10 Hz</strong><span>Adjustable LFO rate</span></article>
-          <article><strong>800 Hz</strong><span>Target crossover frequency</span></article>
-          <article><strong>≈1.2 kHz</strong><span>Implemented low-pass cutoff</span></article>
-          <article><strong>12 dB/oct</strong><span>Low-pass slope</span></article>
-          <article><strong>9 V DC</strong><span>Supply voltage</span></article>
-          <article><strong>200 mA</strong><span>Measured current draw</span></article>
-        </div>
-      </section>
-
       <section class="case-section section-shell collaboration-section">
         <div class="case-label reveal">
           <p class="eyebrow">Collaboration</p>
-          <span>03</span>
+          <span>02</span>
         </div>
         <div class="case-copy reveal">
-          <h2>Designed and built as a joint project.</h2>
-          <p>Antonella Croci and I worked together throughout the project: circuit analysis, component selection, assembly, testing, troubleshooting, and technical documentation.</p>
-          <p>The completed prototype was presented publicly at CAPER 2024 and WorkShow 2024, creating an opportunity to explain both the engineering process and the audible behavior of the effect.</p>
+          <h2>Designed and built with Antonella Croci</h2>
+          <p>We worked together on circuit analysis, component selection, assembly, testing, troubleshooting, and the technical report.</p>
+          <p>We presented the pedal at WorkShow 2024 and CAPER 2024. The enclosure was revised between presentations, and the white enclosure shown below is the latest version.</p>
         </div>
       </section>
 
-      <section class="engineering-material section-block">
+      <section class="presentation-gallery section-shell" aria-label="Prototype and presentation photos">
+        <figure class="presentation-photo presentation-photo-display reveal">
+          <img src="../../assets/images/tremolo-display-enclosure.jpg" alt="Harmonic tremolo pedal on display with decorated enclosure" loading="lazy">
+          <figcaption>Pedal on display · 2024</figcaption>
+        </figure>
+        <figure class="presentation-photo presentation-photo-workshow reveal">
+          <img src="../../assets/images/tremolo-workshow-demo.jpg" alt="Guitarist trying the harmonic tremolo at WorkShow" loading="lazy">
+          <figcaption>Live demonstration · WorkShow 2024</figcaption>
+        </figure>
+        <figure class="presentation-photo presentation-photo-workshow reveal">
+          <img src="../../assets/images/tremolo-workshow-test.jpg" alt="Attendee playing guitar beside the exposed tremolo prototype" loading="lazy">
+          <figcaption>Testing the prototype · WorkShow 2024</figcaption>
+        </figure>
+        <figure class="presentation-photo presentation-photo-latest reveal">
+          <img src="../../assets/images/tremolo-latest-enclosure.png" alt="Latest white enclosure of the harmonic tremolo pedal" loading="lazy">
+          <figcaption>Latest enclosure</figcaption>
+        </figure>
+      </section>
+
+      <section class="report-section section-block">
         <div class="section-shell">
-          <div class="section-heading reveal">
-            <p class="eyebrow">Engineering material (ESTA SECCION TAMBIEN LA SACARIA, SOLO DEJARIA LA DE FULL DOCUMENTATION CON EL RECUADRO)</p>
-            <h2>From subsystem analysis to full implementation.</h2>
-          </div>
-          <div class="material-grid">
-            <figure class="reveal">
-              <img src="../../assets/images/tremolo-lfo.png" alt="Low-frequency oscillator schematic">
-              <figcaption><span>01</span> Low-frequency oscillator</figcaption>
-            </figure>
-            <figure class="reveal">
-              <img src="../../assets/images/tremolo-ldr-response.png" alt="Measured LDR response curve">
-              <figcaption><span>02</span> LDR characterization</figcaption>
-            </figure>
-          </div>
           <div class="report-callout reveal">
             <div>
               <p class="eyebrow">Full documentation</p>
-              <h3>Design calculations, schematics, and technical discussion</h3>
-              <p>The complete English report contains the control and audio circuit analysis, filter design, component calculations, final specifications, and conclusions.</p>
+              <h3>Full technical report</h3>
+              <p>The English report covers the control and audio circuits, filter design, component calculations, specifications, and conclusions.</p>
             </div>
             <a class="button button-primary" href="../../downloads/Analog_Harmonic_Tremolo_EN.pdf" target="_blank">Download report · PDF ↗</a>
           </div>
@@ -146,7 +136,6 @@
 
       <nav class="project-pagination section-shell" aria-label="Project navigation">
         <a href="../../"><span>Back to portfolio</span><strong>Selected work</strong></a>
-        <div><span>Next case study</span><strong>Coming soon</strong></div>
       </nav>
     </main>
 
