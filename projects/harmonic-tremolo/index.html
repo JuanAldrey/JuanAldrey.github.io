@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Analog Harmonic Tremolo — circuit design, prototype, and technical report by Juan Aldrey and Antonella Croci.">
+    <meta name="theme-color" content="#0a0c10">
+    <title>Analog Harmonic Tremolo — Juan Aldrey</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <script src="../../script.js" defer></script>
+  </head>
+  <body id="top" class="project-page">
+    <header class="site-header">
+      <a class="brand" href="../../" aria-label="Juan Aldrey, home">
+        <span class="brand-mark">JA</span>
+        <span class="brand-label">audio systems</span>
+      </a>
+      <a class="back-link" href="../../">← All work</a>
+    </header>
+
+    <main>
+      <section class="project-hero section-shell">
+        <div class="project-hero-copy reveal">
+          <p class="eyebrow">01 / Analog electronics</p>
+          <h1>Analog Harmonic Tremolo</h1>
+          <p class="project-lead">A two-band guitar effect that modulates low and high frequencies in opposition using optically controlled gain.</p>
+          <div class="project-actions">
+            <a class="button button-primary" href="../../downloads/Analog_Harmonic_Tremolo_EN.pdf" target="_blank">Read the full report ↗</a>
+          </div>
+        </div>
+        <dl class="project-facts reveal">
+          <div><dt>Year</dt><dd>2024</dd></div>
+          <div><dt>Team</dt><dd>Juan Aldrey<br>Antonella Croci</dd></div>
+          <div><dt>Format</dt><dd>Designed + built prototype</dd></div>
+          <div><dt>Presented at</dt><dd>CAPER 2024<br>WorkShow 2024</dd></div>
+        </dl>
+      </section>
+
+      <section class="wide-visual reveal">
+        <div class="wide-visual-grid">
+          <figure>
+            <img src="../../assets/images/tremolo-control-circuit.png" alt="Complete control circuit schematic">
+            <figcaption>Control circuit</figcaption>
+          </figure>
+          <figure>
+            <img src="../../assets/images/tremolo-audio-circuit.png" alt="Complete audio circuit schematic">
+            <figcaption>Audio circuit</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-section section-shell">
+        <div class="case-label reveal">
+          <p class="eyebrow">Overview</p>
+          <span>01</span>
+        </div>
+        <div class="case-copy reveal">
+          <h2>Frequency-dependent amplitude modulation, entirely in analog hardware.</h2>
+          <p>The project explores harmonic tremolo as an electroacoustic system rather than a single broadband amplitude control. The input is separated into two bands, whose levels are alternately reduced to create movement in both amplitude and spectral balance.</p>
+          <p>The system was organized into two main sections:</p>
+          <ol class="numbered-list">
+            <li>A control circuit consisting of a low-frequency oscillator (LFO), a depth control stage, a gain stage, and a phase splitter that generates two opposing control signals.</li>
+            <li>An audio circuit that divides the guitar signal into low-pass and high-pass branches, controls the attenuation of each band through LED–LDR optocouplers, and finally recombines both branches.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="signal-flow-section section-block">
+        <div class="section-shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow">System architecture</p>
+            <h2>Two paths, one coordinated effect.</h2>
+          </div>
+          <div class="flow-grid reveal" aria-label="Simplified signal flow">
+            <article class="flow-lane">
+              <div class="flow-title"><span>CTRL</span> Control path</div>
+              <div class="flow-steps">
+                <span>LFO</span><i>→</i><span>Depth</span><i>→</i><span>Gain</span><i>→</i><span>Phase splitter</span>
+              </div>
+              <p>Produces two opposing low-frequency control signals for the optocoupler LEDs.</p>
+            </article>
+            <article class="flow-lane">
+              <div class="flow-title"><span>AUDIO</span> Audio path</div>
+              <div class="flow-steps">
+                <span>Input</span><i>→</i><span>LP / HP split</span><i>→</i><span>LED–LDR gain</span><i>→</i><span>Sum</span>
+              </div>
+              <p>Separates the guitar signal, modulates each band independently, and passively recombines both branches.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section section-shell">
+        <div class="case-label reveal">
+          <p class="eyebrow">Engineering decisions</p>
+          <span>02</span>
+        </div>
+        <div class="spec-grid reveal">
+          <article><strong>1–10 Hz</strong><span>Adjustable LFO rate</span></article>
+          <article><strong>800 Hz</strong><span>Target crossover frequency</span></article>
+          <article><strong>≈1.2 kHz</strong><span>Implemented low-pass cutoff</span></article>
+          <article><strong>12 dB/oct</strong><span>Low-pass slope</span></article>
+          <article><strong>9 V DC</strong><span>Supply voltage</span></article>
+          <article><strong>200 mA</strong><span>Measured current draw</span></article>
+        </div>
+      </section>
+
+      <section class="case-section section-shell collaboration-section">
+        <div class="case-label reveal">
+          <p class="eyebrow">Collaboration</p>
+          <span>03</span>
+        </div>
+        <div class="case-copy reveal">
+          <h2>Designed and built as a joint project.</h2>
+          <p>Antonella Croci and I worked together throughout the project: circuit analysis, component selection, assembly, testing, troubleshooting, and technical documentation.</p>
+          <p>The completed prototype was presented publicly at CAPER 2024 and WorkShow 2024, creating an opportunity to explain both the engineering process and the audible behavior of the effect.</p>
+        </div>
+      </section>
+
+      <section class="engineering-material section-block">
+        <div class="section-shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Engineering material</p>
+            <h2>From subsystem analysis to full implementation.</h2>
+          </div>
+          <div class="material-grid">
+            <figure class="reveal">
+              <img src="../../assets/images/tremolo-lfo.png" alt="Low-frequency oscillator schematic">
+              <figcaption><span>01</span> Low-frequency oscillator</figcaption>
+            </figure>
+            <figure class="reveal">
+              <img src="../../assets/images/tremolo-ldr-response.png" alt="Measured LDR response curve">
+              <figcaption><span>02</span> LDR characterization</figcaption>
+            </figure>
+          </div>
+          <div class="report-callout reveal">
+            <div>
+              <p class="eyebrow">Full documentation</p>
+              <h3>Design calculations, schematics, and technical discussion</h3>
+              <p>The complete English report contains the control and audio circuit analysis, filter design, component calculations, final specifications, and conclusions.</p>
+            </div>
+            <a class="button button-primary" href="../../downloads/Analog_Harmonic_Tremolo_EN.pdf" target="_blank">Download report · PDF ↗</a>
+          </div>
+        </div>
+      </section>
+
+      <nav class="project-pagination section-shell" aria-label="Project navigation">
+        <a href="../../"><span>Back to portfolio</span><strong>Selected work</strong></a>
+        <div><span>Next case study</span><strong>Coming soon</strong></div>
+      </nav>
+    </main>
+
+    <footer class="site-footer section-shell">
+      <div>
+        <span class="brand-mark">JA</span>
+        <p>Audio DSP · Acoustics · Embedded systems</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/JuanAldrey" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="#top">Back to top ↑</a>
+      </div>
+      <p class="copyright">© <span data-year></span> Juan Aldrey</p>
+    </footer>
+  </body>
+</html>
