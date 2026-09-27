@@ -261,14 +261,15 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
   :root { --shell: min(100% - 36px, 760px); }
   .hero, .project-hero { grid-template-columns: 1fr; min-height: auto; }
   .hero { padding-block: 48px; }
-  .hero > .scope-display { inset: 0 -30%; opacity: .22; }
+  .hero > .scope-display { inset: 0; opacity: .18; }
   .signal-card { max-width: 620px; }
   .section-heading, .case-section { grid-template-columns: 1fr; }
   .about { grid-template-columns: minmax(220px, .75fr) minmax(0, 1.25fr); gap: 36px; }
   .section-heading .eyebrow { grid-row: auto; }
   .project-card { grid-template-columns: 1fr; }
   .practice-grid { grid-template-columns: 1fr; }
-  .practice-card { min-height: 270px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .practice-card { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; }
+  .practice-tools { position: static; margin-top: auto; padding-top: 32px; }
   .practice-card:last-child { border-bottom: 0; }
   .case-label { flex-direction: row; }
   .case-label > span { font-size: 4rem; }
@@ -286,6 +287,13 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
   .site-nav.is-open { display: flex; }
   .site-nav a { width: 100%; padding: 14px 4px; border-bottom: 1px solid var(--line); }
   h1 { font-size: clamp(3rem, 16vw, 5rem); }
+  .hero { overflow: clip; }
+  .hero > .scope-display { inset: 0; align-items: flex-start; padding-top: clamp(110px, 35vw, 190px); opacity: .15; -webkit-mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 45%, transparent 67%); mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 45%, transparent 67%); }
+  .hero > .scope-display svg { width: 100%; }
+  .hero-copy, .signal-card, .project-carousel, .project-carousel-track, .project-card, .project-summary { min-width: 0; }
+  .project-carousel-track { max-width: 100%; }
+  .practice-card { padding-block: 34px; }
+  .practice-icon { margin-bottom: 20px; }
   .hero-actions, .project-actions { align-items: flex-start; flex-direction: column; }
   .project-visual { min-height: 320px; }
   .profile-grid { grid-template-columns: 1fr; }
