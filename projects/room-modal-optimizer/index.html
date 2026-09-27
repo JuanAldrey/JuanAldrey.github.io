@@ -6,7 +6,7 @@
     <meta name="description" content="Room Modal Optimizer — frequency-domain FEM, MSFD and genetic optimization for small-room acoustics. A project by Juan Aldrey, Tomás Díaz, Álvaro Lobo and Joaquín Varela.">
     <meta name="theme-color" content="#0a0c10">
     <title>Room Modal Optimizer — Juan Aldrey</title>
-    <link rel="stylesheet" href="../../styles.css?v=20260927i">
+    <link rel="stylesheet" href="../../styles.css?v=20260927j">
     <script src="../../script.js" defer></script>
   </head>
   <body id="top" class="project-page modal-page">
@@ -25,7 +25,6 @@
           <div class="project-actions"><a class="button button-primary" href="https://github.com/JuanAldrey/room-modal-optimizer" target="_blank" rel="noreferrer">Explore the code ↗</a></div>
         </div>
         <div class="modal-hero-side reveal">
-          <div class="modal-hero-mark" aria-hidden="true"><span>GEOMETRY</span><span>→</span><span>RESPONSE</span><span>→</span><span>OPTIMIZATION</span></div>
           <dl class="project-facts">
             <div><dt>Team</dt><dd>Juan Aldrey<br>Tomás Díaz<br>Álvaro Lobo<br>Joaquín Varela</dd></div>
             <div><dt>Focus</dt><dd>Small-room acoustics<br>20–200 Hz</dd></div>
@@ -46,7 +45,7 @@
 
       <section class="signal-flow-section section-block">
         <div class="section-shell">
-          <div class="section-heading reveal"><p class="eyebrow">Method</p><h2>From geometry to a comparable acoustic score</h2></div>
+          <div class="section-heading modal-section-heading reveal"><div class="modal-heading-label"><p class="eyebrow">Method</p><span aria-hidden="true">02</span></div><h2>From geometry to a comparable acoustic score</h2></div>
           <ol class="modal-flow reveal" aria-label="Room evaluation and optimization workflow">
             <li><span>01</span><strong>Candidate geometry</strong><p>Change admissible room dimensions and vertices; hold the source and audience area fixed for the comparison.</p></li>
             <li><span>02</span><strong>Mesh + direct FEM</strong><p>Generate a 3D mesh and solve the forced acoustic field across the frequency range.</p></li>
@@ -59,7 +58,7 @@
       </section>
 
       <section class="case-section section-shell">
-        <div class="case-label reveal"><p class="eyebrow">Checks</p><span>02</span></div>
+        <div class="case-label reveal"><p class="eyebrow">Checks</p><span>03</span></div>
         <div class="case-copy reveal">
           <h2>Three checks shaped the method.</h2>
           <div class="modal-checks">
@@ -72,7 +71,7 @@
 
       <section class="modal-results section-block" id="results">
         <div class="section-shell">
-          <div class="section-heading reveal"><p class="eyebrow">Main result / 04</p><h2>Genetic search versus an exhaustive grid</h2></div>
+          <div class="section-heading modal-section-heading reveal"><div class="modal-heading-label"><p class="eyebrow">Main result</p><span aria-hidden="true">04</span></div><h2>Genetic search versus an exhaustive grid</h2></div>
           <p class="modal-results-intro reveal">Starting from a symmetric 5 × 4 × 3 m room, both methods searched the same allowed geometric ranges and used the same FEM and MSFD evaluation. The exhaustive search tested 4,375 grid configurations; the genetic algorithm explored continuous values within those ranges.</p>
           <div class="modal-result-grid reveal">
             <div class="modal-table-wrap">
@@ -89,7 +88,10 @@
             </div>
             <figure class="modal-result-figure"><img src="../../assets/images/modal-geometry-comparison.jpg" alt="Plan views comparing the best symmetric trapezoidal room geometries from exhaustive grid search and genetic optimization" loading="lazy"><figcaption>Best geometries found by the exhaustive grid and genetic search. Source, audience area and selected receivers are marked.</figcaption></figure>
           </div>
-          <figure class="modal-convergence reveal"><img src="../../assets/images/modal-ga-convergence.jpg" alt="Fitness rising over the genetic algorithm generations and then stabilizing" loading="lazy"><figcaption>Fitness improved rapidly in early generations and stabilized later in the run.</figcaption></figure>
+          <div class="modal-convergence-panel reveal">
+            <div class="modal-convergence-copy"><p class="eyebrow">How the search progressed</p><h3>Converging on the reported result</h3><p>Fitness rose rapidly in the early generations and then stabilized as the genetic search refined the geometry shown above.</p></div>
+            <figure class="modal-convergence"><img src="../../assets/images/modal-ga-convergence.jpg" alt="Fitness rising over the genetic algorithm generations and then stabilizing" loading="lazy"><figcaption>Fitness over the genetic algorithm generations.</figcaption></figure>
+          </div>
         </div>
       </section>
 
