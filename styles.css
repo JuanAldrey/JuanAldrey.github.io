@@ -95,7 +95,7 @@ h3 { font-size: clamp(1.6rem, 2.6vw, 2.5rem); font-weight: 580; }
   align-items: center;
   gap: clamp(50px, 8vw, 120px);
 }
-.hero h1 { max-width: 900px; margin-bottom: 34px; }
+.hero h1 { max-width: 900px; margin-bottom: 34px; font-size: clamp(3.1rem, 6.3vw, 5.8rem); }
 .hero-intro { max-width: 700px; color: var(--muted); font-size: clamp(1.08rem, 1.6vw, 1.3rem); line-height: 1.65; }
 .status-dot { display: inline-block; width: 7px; height: 7px; margin-right: 9px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 14px var(--accent); }
 .hero-actions, .project-actions { display: flex; align-items: center; gap: 28px; margin-top: 42px; }
