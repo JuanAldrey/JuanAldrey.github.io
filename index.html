@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Juan Aldrey — Sound Engineering portfolio focused on audio DSP, active noise control, acoustic simulation, and electroacoustic design.">
+    <meta name="theme-color" content="#0a0c10">
+    <title>Juan Aldrey — Audio DSP & Acoustics</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Juan Aldrey, home">
+        <span class="brand-mark">JA</span>
+        <span class="brand-label">audio systems</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Open navigation</span>
+        <span></span><span></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <a href="#work">Work</a>
+        <a href="#practice">Practice</a>
+        <a href="#about">About</a>
+        <a href="https://github.com/JuanAldrey" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section-shell">
+        <div class="hero-copy reveal">
+          <p class="eyebrow"><span class="status-dot"></span> Sound Engineering · DSP · Acoustics</p>
+          <h1>I design audio systems where algorithms meet acoustics.</h1>
+          <p class="hero-intro">I'm Juan Aldrey, a Sound Engineering student at UNTREF in Buenos Aires. I work across active noise control, embedded audio, acoustic simulation, measurement, and electroacoustic design.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#work">View selected work</a>
+            <a class="text-link" href="https://github.com/JuanAldrey" target="_blank" rel="noreferrer">Explore my GitHub <span>↗</span></a>
+          </div>
+        </div>
+
+        <aside class="signal-card reveal" aria-label="Current profile">
+          <div class="signal-card-top">
+            <span>PROFILE / 2026</span>
+            <span class="live-label">ACTIVE</span>
+          </div>
+          <div class="scope-display" aria-hidden="true">
+            <svg viewBox="0 0 640 210" role="img">
+              <defs>
+                <linearGradient id="signalFade" x1="0" x2="1">
+                  <stop offset="0" stop-color="#66e6bf" stop-opacity="0"></stop>
+                  <stop offset="0.18" stop-color="#66e6bf"></stop>
+                  <stop offset="0.82" stop-color="#66e6bf"></stop>
+                  <stop offset="1" stop-color="#66e6bf" stop-opacity="0"></stop>
+                </linearGradient>
+              </defs>
+              <path class="grid-line" d="M0 35H640M0 70H640M0 105H640M0 140H640M0 175H640M80 0V210M160 0V210M240 0V210M320 0V210M400 0V210M480 0V210M560 0V210"></path>
+              <path class="signal-line" d="M0 106 C34 106,38 106,54 106 C72 106,72 58,90 58 C108 58,108 154,126 154 C144 154,144 84,162 84 C180 84,180 126,198 126 C216 126,216 96,234 96 C252 96,252 115,270 115 C288 115,288 102,306 102 C324 102,324 111,342 111 C360 111,360 97,378 97 C396 97,396 120,414 120 C432 120,432 78,450 78 C468 78,468 143,486 143 C504 143,504 52,522 52 C540 52,540 160,558 160 C576 160,576 106,594 106 H640"></path>
+            </svg>
+          </div>
+          <dl class="profile-grid">
+            <div><dt>Base</dt><dd>Buenos Aires, AR</dd></div>
+            <div><dt>Focus</dt><dd>Audio DSP + Acoustics</dd></div>
+            <div><dt>Current</dt><dd>Embedded ANC thesis</dd></div>
+            <div><dt>Tools</dt><dd>Python · C · FEM</dd></div>
+          </dl>
+        </aside>
+      </section>
+
+      <section id="work" class="section-shell section-block">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Selected work</p>
+          <h2>Built, tested, and documented.</h2>
+          <p>Engineering projects with working code or hardware, supported by technical reports and measured results.</p>
+        </div>
+
+        <a class="project-card project-card-featured reveal" href="projects/harmonic-tremolo/">
+          <div class="project-visual">
+            <img src="assets/images/tremolo-control-circuit.png" alt="Control circuit schematic for the Analog Harmonic Tremolo">
+            <span class="project-index">01</span>
+          </div>
+          <div class="project-summary">
+            <div class="project-kicker">
+              <span>Analog electronics</span>
+              <span>2024</span>
+            </div>
+            <h3>Analog Harmonic Tremolo</h3>
+            <p>A guitar effect that splits the signal into two frequency bands and modulates them in opposition through LED–LDR optocouplers.</p>
+            <ul class="tag-list" aria-label="Project topics">
+              <li>Audio effects</li>
+              <li>Analog filters</li>
+              <li>Optical control</li>
+              <li>Prototyping</li>
+            </ul>
+            <span class="card-link">View case study <span>→</span></span>
+          </div>
+        </a>
+      </section>
+
+      <section id="practice" class="practice-section section-block">
+        <div class="section-shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Engineering practice</p>
+            <h2>One profile, three connected layers.</h2>
+          </div>
+          <div class="practice-grid">
+            <article class="practice-card reveal">
+              <span class="practice-number">A</span>
+              <h3>Algorithms</h3>
+              <p>Adaptive filtering, system identification, multichannel signal processing, and acoustic analysis.</p>
+              <p class="practice-tools">FxLMS · NLMS · Python · C</p>
+            </article>
+            <article class="practice-card reveal">
+              <span class="practice-number">B</span>
+              <h3>Physical systems</h3>
+              <p>Embedded audio, electroacoustic prototypes, transducers, analog electronics, and measurement chains.</p>
+              <p class="practice-tools">STM32 · I²S · DMA · Instrumentation</p>
+            </article>
+            <article class="practice-card reveal">
+              <span class="practice-number">C</span>
+              <h3>Simulation</h3>
+              <p>Room acoustics, wave-based models, numerical optimization, and reproducible computational workflows.</p>
+              <p class="practice-tools">FEM · Gmsh · DOLFINx · SLEPc</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="about section-shell section-block">
+        <div class="about-label reveal">
+          <p class="eyebrow">About</p>
+          <p class="mono-note">ENGINEER × MUSICIAN</p>
+        </div>
+        <div class="about-copy reveal">
+          <h2>I care about the complete signal path.</h2>
+          <p>My work starts with the physics of sound and follows the signal through measurement, modeling, algorithm design, real-time implementation, and critical listening.</p>
+          <p>As a musician and Sound Engineering student, I approach audio technology from both sides: what the system is doing and how it is actually experienced.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer section-shell">
+      <div>
+        <span class="brand-mark">JA</span>
+        <p>Audio DSP · Acoustics · Embedded systems</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/JuanAldrey" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="#top">Back to top ↑</a>
+      </div>
+      <p class="copyright">© <span data-year></span> Juan Aldrey</p>
+    </footer>
+  </body>
+</html>
