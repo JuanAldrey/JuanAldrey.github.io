@@ -59,8 +59,16 @@ if (projectCarousel) {
     next.disabled = activeIndex === cards.length - 1;
   }
 
-  previous.addEventListener('click', () => cards[Math.max(0, activeIndex - 1)].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' }));
-  next.addEventListener('click', () => cards[Math.min(cards.length - 1, activeIndex + 1)].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' }));
+  function showProject(index) {
+    activeIndex = Math.max(0, Math.min(cards.length - 1, index));
+    track.scrollTo({ left: cards[activeIndex].offsetLeft - cards[0].offsetLeft, behavior: 'smooth' });
+    current.textContent = String(activeIndex + 1).padStart(2, '0');
+    previous.disabled = activeIndex === 0;
+    next.disabled = activeIndex === cards.length - 1;
+  }
+
+  previous.addEventListener('click', () => showProject(activeIndex - 1));
+  next.addEventListener('click', () => showProject(activeIndex + 1));
   track.addEventListener('scroll', updateCarousel, { passive: true });
   window.addEventListener('resize', updateCarousel);
   updateCarousel();
