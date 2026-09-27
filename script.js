@@ -35,3 +35,33 @@ if ('IntersectionObserver' in window) {
 } else {
   revealElements.forEach((element) => element.classList.add('is-visible'));
 }
+
+const projectCarousel = document.querySelector('.project-carousel');
+
+if (projectCarousel) {
+  const track = projectCarousel.querySelector('.project-carousel-track');
+  const cards = [...track.querySelectorAll('.project-card')];
+  const previous = projectCarousel.querySelector('[data-carousel-prev]');
+  const next = projectCarousel.querySelector('[data-carousel-next]');
+  const current = projectCarousel.querySelector('[data-carousel-current]');
+  const total = projectCarousel.querySelector('[data-carousel-total]');
+  let activeIndex = 0;
+
+  total.textContent = String(cards.length).padStart(2, '0');
+
+  function updateCarousel() {
+    const trackCenter = track.scrollLeft + track.clientWidth / 2;
+    activeIndex = cards.reduce((closest, card, index) =>
+      Math.abs(card.offsetLeft + card.clientWidth / 2 - trackCenter) <
+      Math.abs(cards[closest].offsetLeft + cards[closest].clientWidth / 2 - trackCenter) ? index : closest, 0);
+    current.textContent = String(activeIndex + 1).padStart(2, '0');
+    previous.disabled = activeIndex === 0;
+    next.disabled = activeIndex === cards.length - 1;
+  }
+
+  previous.addEventListener('click', () => cards[Math.max(0, activeIndex - 1)].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' }));
+  next.addEventListener('click', () => cards[Math.min(cards.length - 1, activeIndex + 1)].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' }));
+  track.addEventListener('scroll', updateCarousel, { passive: true });
+  window.addEventListener('resize', updateCarousel);
+  updateCarousel();
+}
