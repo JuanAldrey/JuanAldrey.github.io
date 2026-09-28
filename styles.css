@@ -145,6 +145,8 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
 .project-visual { position: relative; display: grid; place-items: center; min-height: 440px; padding: clamp(24px, 5vw, 70px); background: #f2f2ed; overflow: hidden; }
 .project-visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, transparent 60%, rgba(10,12,16,.08)); }
 .project-visual img { width: 100%; max-height: 420px; object-fit: contain; filter: contrast(1.04); }
+.project-visual-interface { padding: clamp(16px, 2vw, 28px); background: #303030; }
+.project-visual-interface .project-index { color: #fff; opacity: .25; }
 .project-index { position: absolute; left: 22px; bottom: 14px; color: #0a0c10; font: 700 clamp(3rem, 7vw, 6rem)/1 "SFMono-Regular", Consolas, monospace; opacity: .14; }
 .project-summary { padding: clamp(36px, 6vw, 80px); display: flex; flex-direction: column; justify-content: center; }
 .project-kicker { display: flex; justify-content: space-between; color: var(--accent); margin-bottom: 28px; }
