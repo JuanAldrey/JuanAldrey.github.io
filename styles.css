@@ -185,6 +185,8 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
 .project-hero-side { align-self: stretch; display: flex; flex-direction: column; justify-content: space-between; gap: 52px; }
 .tremolo-hero-image { margin: 0; overflow: hidden; }
 .tremolo-hero-image img { display: block; width: 100%; height: auto; }
+.tremolo-page .project-hero { align-items: start; }
+.tremolo-page .project-hero-side { align-self: start; padding-top: clamp(110px, 11vw, 165px); }
 .tremolo-motif { margin: 0; padding: 22px 12px 12px; border: 1px solid var(--line); background: rgba(17,21,27,.4); }
 .tremolo-motif figcaption, .motif-legend { color: var(--faint); font: .68rem/1.4 "SFMono-Regular", Consolas, monospace; letter-spacing: .1em; text-transform: uppercase; }
 .tremolo-motif svg { display: block; width: 100%; height: auto; margin: 16px 0 2px; }
@@ -264,6 +266,7 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
 @media (max-width: 980px) {
   :root { --shell: min(100% - 36px, 760px); }
   .hero, .project-hero { grid-template-columns: 1fr; min-height: auto; }
+  .tremolo-page .project-hero-side { padding-top: 0; }
   .hero { padding-block: 48px; }
   .hero > .scope-display { inset: 0; opacity: .18; }
   .signal-card { max-width: 620px; }
