@@ -447,3 +447,20 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
 .button-pending, .button-pending:disabled { color: var(--muted); background: transparent; border-color: var(--line-strong); cursor: not-allowed; opacity: .75; }
 .report-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 12px; }
 @media (max-width: 980px) { .report-actions { justify-content: flex-start; } }
+
+/* Digital delay: circuit simulation and PCB design. */
+.delay-page .project-hero { grid-template-columns: 1.1fr .9fr; align-items: start; gap: clamp(32px, 5vw, 72px); }
+.delay-page .project-hero h1 { font-size: clamp(3.8rem, 7vw, 7rem); }
+.delay-page .project-hero-side { gap: 28px; }
+.delay-hero-image { margin: 0; }
+.delay-hero-image img { width: 100%; max-height: 480px; object-fit: contain; display: block; }
+.delay-hero-image figcaption, .delay-figure figcaption { color: var(--muted); padding-top: 14px; font-size: .72rem; }
+.delay-figure { margin: 0; min-width: 0; }
+.delay-figure img { display: block; width: 100%; height: auto; }
+.delay-schematic { padding-bottom: 40px; }
+.delay-schematic img { background: #fff; }
+.delay-plot-grid, .delay-board-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; padding-bottom: clamp(60px, 8vw, 100px); }
+.delay-board-grid img { height: 460px; object-fit: contain; background: #f2f2ed; }
+.project-visual-delay { background: #e8ece5; }
+@media (max-width: 900px) { .delay-page .project-hero { grid-template-columns: 1fr; } .delay-hero-image img { max-height: 500px; } }
+@media (max-width: 600px) { .delay-plot-grid, .delay-board-grid { grid-template-columns: 1fr; gap: 28px; } .delay-board-grid img { height: auto; max-height: 460px; } }
