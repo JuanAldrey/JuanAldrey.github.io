@@ -73,3 +73,21 @@ if (projectCarousel) {
   window.addEventListener('resize', updateCarousel);
   updateCarousel();
 }
+
+// Simple PCB image gallery: arrows, touch, and keyboard scrolling.
+document.querySelectorAll('[data-board-carousel]').forEach((carousel) => {
+  const track = carousel.querySelector('.delay-board-track');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  function advance(direction) {
+    const step = track.querySelector('figure').getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap);
+    track.scrollBy({ left: direction * step, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+  }
+  carousel.querySelector('[data-board-prev]').addEventListener('click', () => advance(-1));
+  carousel.querySelector('[data-board-next]').addEventListener('click', () => advance(1));
+  track.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      event.preventDefault();
+      advance(event.key === 'ArrowLeft' ? -1 : 1);
+    }
+  });
+});
