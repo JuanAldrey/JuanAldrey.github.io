@@ -75,15 +75,15 @@
       <section class="anc-results section-block">
         <div class="section-shell">
           <div class="section-heading numbered-section-heading reveal"><div class="numbered-heading-label"><p class="eyebrow">Simulation example</p><span aria-hidden="true">04</span></div><h2>See and hear the feedforward experiment</h2></div>
-          <p class="anc-results-intro reveal">This notebook adapts the feedforward concept from Karl and Sachau (2024) to a simulated direct-sound room. The disturbance is a heavy vehicle passing by. The plot shows the disturbance, control sound and residual error; the audio compares the signal at the error microphone with and without ANC.</p>
+          <p class="anc-results-intro reveal">This notebook adapts the feedforward concept from Karl and Sachau (2024) to an acoustic scene simulated in Pyroomacoustics. I extract the room impulse responses (RIRs) for the acoustic paths, use them in the controller simulation, and auralize the resulting signal at the error microphone. The plot shows the disturbance, control sound and residual error for a heavy vehicle pass; the audio lets you compare that scene with and without ANC.</p>
           <div class="anc-demo-grid reveal">
             <figure class="anc-demo-plot"><img src="../../assets/images/anc-feedforward-1.png" alt="Feedforward ANC simulation showing disturbance, control sound and residual error waveforms during a heavy vehicle pass" loading="lazy"><figcaption>Notebook output · full 45 s simulation. The residual error is shown in green.</figcaption></figure>
             <div class="anc-listening-panel">
               <p class="eyebrow">Listen · 30–45 s excerpt</p>
               <h3>Heavy vehicle pass</h3>
               <p>Both recordings use the same simulated error-microphone position and playback gain. Switch between them to hear the effect of the feedforward controller.</p>
-              <div class="anc-audio-example"><label for="anc-audio-off">Without ANC</label><audio id="anc-audio-off" controls preload="none" src="../../assets/audio/heavy-vehicle-no-anc.mp3">Your browser does not support audio playback.</audio></div>
-              <div class="anc-audio-example"><label for="anc-audio-on">With feedforward ANC</label><audio id="anc-audio-on" controls preload="none" src="../../assets/audio/heavy-vehicle-feedforward-anc.mp3">Your browser does not support audio playback.</audio></div>
+              <div class="anc-audio-example"><label for="anc-audio-off">Without ANC</label><audio id="anc-audio-off" controls preload="none" src="../../assets/audio/heavy-vehicle-no-anc.mp3?v=20260929b">Your browser does not support audio playback.</audio></div>
+              <div class="anc-audio-example"><label for="anc-audio-on">With feedforward ANC</label><audio id="anc-audio-on" controls preload="none" src="../../assets/audio/heavy-vehicle-feedforward-anc.mp3?v=20260929b">Your browser does not support audio playback.</audio></div>
               <a class="anc-notebook-link" href="https://github.com/JuanAldrey/ANC-practice-library/blob/main/notebooks/Multichannel/FWFxLMS-Karl-Sachau-2024.ipynb" target="_blank" rel="noreferrer">Open the feedforward notebook ↗</a>
             </div>
           </div>
