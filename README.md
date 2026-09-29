@@ -2,9 +2,11 @@
 
 Personal engineering portfolio hosted with GitHub Pages.
 
-## Current case study
+## Project pages
 
-- Analog Harmonic Tremolo — analog audio effect designed and built with Antonella Croci.
+- [Room Modal Optimizer](projects/room-modal-optimizer/) — computational room acoustics and optimization.
+- [ANC Practice Library](projects/anc-practice-library/) — independent study of active noise control algorithms.
+- [Analog Harmonic Tremolo](projects/harmonic-tremolo/) — analog audio effect designed and built with Antonella Croci.
 
 ## Local preview
 
