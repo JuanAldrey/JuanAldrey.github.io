@@ -464,3 +464,6 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
 .project-visual-delay { background: #e8ece5; }
 @media (max-width: 900px) { .delay-page .project-hero { grid-template-columns: 1fr; } .delay-hero-image img { max-height: 340px; } }
 @media (max-width: 600px) { .delay-plot-grid, .delay-board-grid { grid-template-columns: 1fr; gap: 28px; } .delay-board-grid img { height: auto; max-height: 460px; } }
+
+.delay-page .project-hero { padding-bottom: clamp(28px, 4vw, 48px); }
+.delay-page .project-hero + .case-section { padding-top: clamp(36px, 5vw, 64px); }
