@@ -398,32 +398,38 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
 .anc-track-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--line); }
 .anc-track-grid article { padding: clamp(24px, 3vw, 38px); border-right: 1px solid var(--line); display: flex; flex-direction: column; }
 .anc-track-grid article:last-child { border-right: 0; }
-.anc-track-grid article > span, .anc-example-list article > span { color: var(--accent); font: .72rem/1.4 "SFMono-Regular", Consolas, monospace; letter-spacing: .05em; text-transform: uppercase; }
+.anc-track-grid article > span { color: var(--accent); font: .72rem/1.4 "SFMono-Regular", Consolas, monospace; letter-spacing: .05em; text-transform: uppercase; }
 .anc-track-grid h3 { font-size: 1.5rem; margin: 22px 0 14px; }
-.anc-track-grid p, .anc-example-list p { color: var(--muted); }
-.anc-track-grid a, .anc-example-list a { color: var(--accent); font-size: .9rem; margin-top: auto; padding-top: 20px; }
-.anc-example-list { border-top: 1px solid var(--line); }
-.anc-example-list article { padding: 25px 0; border-bottom: 1px solid var(--line); }
-.anc-example-list p { margin: 12px 0 0; }
-.anc-example-links { display: flex; flex-wrap: wrap; gap: 24px; }
-.anc-plot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-.anc-plot-grid figure { margin: 0; min-width: 0; background: #fff; }
-.anc-plot-grid img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; }
-.anc-plot-grid figcaption { padding: 14px 18px; background: var(--bg); color: var(--muted); font-size: .85rem; }
+.anc-track-grid p { color: var(--muted); }
+.anc-track-grid a { color: var(--accent); font-size: .9rem; margin-top: auto; padding-top: 20px; }
+.anc-reading { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 30px; }
+.anc-reading a { color: var(--accent); }
+.anc-results-intro { max-width: 830px; margin: -20px 0 40px; color: var(--muted); font-size: 1.07rem; }
+.anc-demo-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr); gap: 20px; align-items: stretch; }
+.anc-demo-plot { margin: 0; min-width: 0; background: #fff; display: flex; flex-direction: column; }
+.anc-demo-plot img { display: block; width: 100%; flex: 1; object-fit: contain; }
+.anc-demo-plot figcaption { padding: 14px 18px; background: var(--bg); color: var(--muted); font-size: .85rem; }
+.anc-listening-panel { border: 1px solid var(--line); padding: clamp(24px, 3vw, 38px); }
+.anc-listening-panel .eyebrow { margin-bottom: 14px; }
+.anc-listening-panel h3 { margin: 0 0 18px; font-size: 1.6rem; }
+.anc-listening-panel > p:not(.eyebrow) { color: var(--muted); font-size: .92rem; }
+.anc-audio-example { border-top: 1px solid var(--line); padding-top: 18px; margin-top: 20px; }
+.anc-audio-example label { display: block; margin-bottom: 12px; font-weight: 650; }
+.anc-audio-example audio { display: block; width: 100%; }
+.anc-notebook-link { display: inline-block; color: var(--accent); margin-top: 25px; font-size: .9rem; }
 .anc-results-note { color: var(--muted); margin: 25px 0 0; font-size: .9rem; }
-.anc-scope { border-bottom: 0; }
-.anc-scope code { font-size: .9em; color: var(--accent); }
+.anc-results-note code { color: var(--accent); }
 .anc-context-sources { margin-top: 24px; font-size: .85rem !important; }
 .anc-context-sources a { color: var(--accent); }
 @media (max-width: 980px) {
   .anc-track-grid { grid-template-columns: 1fr; }
   .anc-track-grid article { border-right: 0; border-bottom: 1px solid var(--line); }
   .anc-track-grid article:last-child { border-bottom: 0; }
+  .anc-demo-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 680px) {
   .anc-card-diagram { font-size: .56rem; gap: 5px; }
   .anc-card-node, .anc-card-target { padding: 8px 5px; min-height: 50px; }
-  .anc-plot-grid { grid-template-columns: 1fr; }
   .anc-loop { font-size: .62rem; }
   .anc-loop-row { gap: 4px; }
 }
