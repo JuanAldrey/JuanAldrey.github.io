@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" role="img" aria-labelledby="title desc">
+  <title id="title">Filtered-x LMS active noise control</title>
+  <desc id="desc">The reference signal passes through the primary path to the error summation and through the adaptive filter and secondary path to cancel the disturbance. A secondary path estimate filters the reference for LMS adaptation using the error signal.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M1 1 9 5 1 9" fill="none" stroke="#68e6bf" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#b4d9d0" stroke-opacity=".055"/></pattern>
+    <style>
+      .wire{fill:none;stroke:#68e6bf;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+      .arrow{marker-end:url(#arrow)}
+      .box{fill:#172a2c;stroke:#68e6bf;stroke-opacity:.63;stroke-width:1.5}
+      .box-muted{fill:#18252a;stroke:#9fbdb7;stroke-opacity:.6;stroke-width:1.5}
+      .name{fill:#f0f5f2;font:600 19px Arial,sans-serif;text-anchor:middle}
+      .symbol{fill:#68e6bf;font:italic 24px Georgia,serif;text-anchor:middle}
+      .label{fill:#aac0bc;font:italic 21px Georgia,serif}
+      .note{fill:#68e6bf;font:12px monospace;letter-spacing:2px}
+    </style>
+  </defs>
+  <rect width="1000" height="640" fill="#111b20"/>
+  <rect width="1000" height="640" fill="url(#grid)"/>
+  <text x="54" y="53" class="note">FEEDFORWARD ANC / FILTERED-X LMS</text>
+
+  <!-- Acoustic paths and the error microphone. -->
+  <text x="52" y="151" class="label">x(n)</text>
+  <path class="wire arrow" d="M112 143H275"/>
+  <circle cx="145" cy="143" r="5" fill="#68e6bf"/>
+  <rect class="box" x="275" y="100" width="220" height="86" rx="4"/>
+  <text x="385" y="135" class="name">Primary path</text>
+  <text x="385" y="166" class="symbol">P(z)</text>
+  <path class="wire arrow" d="M495 143H770"/>
+  <text x="592" y="130" class="label">d(n)</text>
+  <circle cx="805" cy="143" r="35" fill="#172a2c" stroke="#68e6bf" stroke-width="2"/>
+  <text x="805" y="154" fill="#f0f5f2" font-family="Georgia,serif" font-size="37" text-anchor="middle">Σ</text>
+  <text x="757" y="118" fill="#68e6bf" font-family="Arial,sans-serif" font-size="21">+</text>
+  <text x="818" y="201" fill="#68e6bf" font-family="Arial,sans-serif" font-size="24">−</text>
+  <path class="wire arrow" d="M840 143H955"/>
+  <circle cx="905" cy="143" r="5" fill="#68e6bf"/>
+  <text x="875" y="126" class="label">e(n)</text>
+
+  <!-- Control output through the physical secondary path. -->
+  <path class="wire arrow" d="M145 143V335H275"/>
+  <circle cx="145" cy="335" r="5" fill="#68e6bf"/>
+  <rect class="box" x="275" y="292" width="220" height="86" rx="4"/>
+  <text x="385" y="327" class="name">Adaptive filter</text>
+  <text x="385" y="358" class="symbol">W(z)</text>
+  <path class="wire arrow" d="M495 335H615"/>
+  <text x="534" y="318" class="label">y(n)</text>
+  <rect class="box" x="615" y="292" width="105" height="86" rx="4"/>
+  <text x="667" y="344" class="symbol">S(z)</text>
+  <path class="wire arrow" d="M720 335H805V180"/>
+  <text x="724" y="316" class="label">y′(n)</text>
+
+  <!-- Filtered reference and residual error drive LMS adaptation. -->
+  <path class="wire arrow" d="M145 335V482H187"/>
+  <rect class="box-muted" x="187" y="444" width="88" height="75" rx="4"/>
+  <text x="231" y="489" class="symbol">Ŝ(z)</text>
+  <path class="wire arrow" d="M275 482H310V535H340"/>
+  <rect class="box" x="340" y="493" width="220" height="83" rx="4"/>
+  <text x="450" y="531" class="name">LMS adaptation</text>
+  <text x="450" y="556" fill="#aac0bc" font-family="Arial,sans-serif" font-size="14" text-anchor="middle">filtered reference + error</text>
+  <path class="wire arrow" d="M905 143V535H560"/>
+  <path class="wire arrow" d="M450 493V378"/>
+  <text x="73" y="615" class="note">REFERENCE</text>
+  <text x="786" y="615" class="note">RESIDUAL ERROR</text>
+</svg>
