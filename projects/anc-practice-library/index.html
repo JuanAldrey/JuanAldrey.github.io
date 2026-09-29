@@ -6,7 +6,7 @@
     <meta name="description" content="ANC Practice Library — Juan Aldrey Alurralde's 2026 independent study of active noise control algorithms in Python notebooks.">
     <meta name="theme-color" content="#0a0c10">
     <title>ANC Practice Library — Juan Aldrey Alurralde</title>
-    <link rel="stylesheet" href="../../styles.css?v=20260929a">
+    <link rel="stylesheet" href="../../styles.css?v=20260929b">
     <script src="../../script.js" defer></script>
   </head>
   <body id="top" class="project-page anc-page">
@@ -21,7 +21,7 @@
           <p class="eyebrow">02 / Active noise control</p>
           <h1>ANC Practice Library</h1>
           <p class="project-lead">A collection of Python notebooks for studying active noise control through simulated acoustic paths and adaptive algorithms.</p>
-          <p class="project-role">I built this independent study in 2026, before Room Modal Optimizer. The implementations draw mainly on Stephen J. Elliott's work and selected research papers.</p>
+          <p class="project-role">I built this independent study in 2026. The implementations draw mainly on Stephen J. Elliott's 2001 book <em>Signal Processing for Active Control</em> and selected research papers.</p>
           <div class="project-actions"><a class="button button-primary" href="https://github.com/JuanAldrey/ANC-practice-library" target="_blank" rel="noreferrer">Explore the notebooks ↗</a></div>
         </div>
         <div class="anc-hero-side reveal">
@@ -43,7 +43,9 @@
         <div class="case-label reveal"><p class="eyebrow">Overview</p><span>01</span></div>
         <div class="case-copy reveal">
           <h2>Implement, simulate, inspect.</h2>
-          <p>Active noise control uses a loudspeaker to produce a sound that reduces an unwanted disturbance at an error microphone. The controller has to adapt while accounting for the acoustic path between loudspeaker and microphone.</p>
+          <p>An active noise control system uses one or more loudspeakers to generate a secondary sound field that interferes destructively with a disturbance. An error microphone measures the residual sound at the target location, and the controller adapts the anti-noise signal to minimize the measured sound pressure.</p>
+          <p>Environmental noise is a growing concern in densely populated cities. Long-term exposure is associated with sleep disruption, reduced cognitive performance and cardiovascular risk. At the same time, advances in digital processing make adaptive ANC increasingly practical, although real-time computational cost remains a constraint, especially in multichannel systems.</p>
+          <p class="anc-context-sources">Context: <a href="https://doi.org/10.1016/j.apacoust.2024.110120" target="_blank" rel="noreferrer">Tan &amp; Lau (2024) ↗</a> · <a href="https://doi.org/10.1121/2.0002291" target="_blank" rel="noreferrer">Sachau &amp; Karl (2026) ↗</a></p>
           <p>These notebooks let me work through that process: model primary and secondary paths, update adaptive filters, and inspect error signals under different arrangements and stimuli. They are educational implementations and adaptations, rather than reproductions of published experiments.</p>
         </div>
       </section>

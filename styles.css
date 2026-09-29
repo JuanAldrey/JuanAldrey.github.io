@@ -413,6 +413,8 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
 .anc-results-note { color: var(--muted); margin: 25px 0 0; font-size: .9rem; }
 .anc-scope { border-bottom: 0; }
 .anc-scope code { font-size: .9em; color: var(--accent); }
+.anc-context-sources { margin-top: 24px; font-size: .85rem !important; }
+.anc-context-sources a { color: var(--accent); }
 @media (max-width: 980px) {
   .anc-track-grid { grid-template-columns: 1fr; }
   .anc-track-grid article { border-right: 0; border-bottom: 1px solid var(--line); }
