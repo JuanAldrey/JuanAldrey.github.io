@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ANC Practice Library — Juan Aldrey Alurralde's 2026 independent study of active noise control algorithms in Python notebooks.">
+    <meta name="theme-color" content="#0a0c10">
+    <title>ANC Practice Library — Juan Aldrey Alurralde</title>
+    <link rel="stylesheet" href="../../styles.css?v=20260929a">
+    <script src="../../script.js" defer></script>
+  </head>
+  <body id="top" class="project-page anc-page">
+    <header class="site-header">
+      <a class="brand" href="../../" aria-label="Juan Aldrey Alurralde, home"><span class="brand-mark">JA</span><span class="brand-label">audio systems</span></a>
+      <a class="back-link" href="../../">← All work</a>
+    </header>
+
+    <main>
+      <section class="project-hero section-shell">
+        <div class="project-hero-copy reveal">
+          <p class="eyebrow">02 / Active noise control</p>
+          <h1>ANC Practice Library</h1>
+          <p class="project-lead">A collection of Python notebooks for studying active noise control through simulated acoustic paths and adaptive algorithms.</p>
+          <p class="project-role">I built this independent study in 2026, before Room Modal Optimizer. The implementations draw mainly on Stephen J. Elliott's work and selected research papers.</p>
+          <div class="project-actions"><a class="button button-primary" href="https://github.com/JuanAldrey/ANC-practice-library" target="_blank" rel="noreferrer">Explore the notebooks ↗</a></div>
+        </div>
+        <div class="anc-hero-side reveal">
+          <div class="anc-loop" role="img" aria-label="Simplified active noise control loop: disturbance and control sound combine at an error microphone; its error signal guides an adaptive controller.">
+            <div class="anc-loop-row"><span>Disturbance</span><span class="anc-loop-line">────────→</span><span>Error microphone</span></div>
+            <div class="anc-loop-row"><span>Adaptive controller</span><span class="anc-loop-line">──→</span><span>Secondary path</span><span class="anc-loop-line">──→</span><span>↗</span></div>
+            <div class="anc-loop-feedback">error signal · adaptation</div>
+          </div>
+          <dl class="project-facts">
+            <div><dt>Year</dt><dd>2026</dd></div>
+            <div><dt>Type</dt><dd>Independent study</dd></div>
+            <div><dt>Author</dt><dd>Juan Aldrey Alurralde</dd></div>
+            <div><dt>Format</dt><dd>Python notebooks<br>Simulated experiments</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="case-section section-shell">
+        <div class="case-label reveal"><p class="eyebrow">Overview</p><span>01</span></div>
+        <div class="case-copy reveal">
+          <h2>Implement, simulate, inspect.</h2>
+          <p>Active noise control uses a loudspeaker to produce a sound that reduces an unwanted disturbance at an error microphone. The controller has to adapt while accounting for the acoustic path between loudspeaker and microphone.</p>
+          <p>These notebooks let me work through that process: model primary and secondary paths, update adaptive filters, and inspect error signals under different arrangements and stimuli. They are educational implementations and adaptations, rather than reproductions of published experiments.</p>
+        </div>
+      </section>
+
+      <section class="anc-tracks section-block">
+        <div class="section-shell">
+          <div class="section-heading numbered-section-heading reveal"><div class="numbered-heading-label"><p class="eyebrow">Inside the library</p><span aria-hidden="true">02</span></div><h2>Three connected lines of work</h2></div>
+          <div class="anc-track-grid reveal">
+            <article><span>01 / Foundations</span><h3>Single-channel control</h3><p>Feedforward FxLMS, block and notch variants, modified and leaky adaptation, and harmonic control.</p><a href="https://github.com/JuanAldrey/ANC-practice-library/tree/main/notebooks/Singlechannel" target="_blank" rel="noreferrer">Browse notebooks ↗</a></article>
+            <article><span>02 / More channels</span><h3>Multichannel control</h3><p>Multiple references, actuators and error microphones, with time- and frequency-domain experiments and tonal control.</p><a href="https://github.com/JuanAldrey/ANC-practice-library/blob/main/notebooks/Multichannel/FxLMS.ipynb" target="_blank" rel="noreferrer">See multichannel FxLMS ↗</a></article>
+            <article><span>03 / Path estimation</span><h3>Secondary-path modeling</h3><p>Offline identification and online modeling, including simultaneous modeling and control adapted from Hu, Xue and Lu.</p><a href="https://github.com/JuanAldrey/ANC-practice-library/blob/main/notebooks/Multichannel/SMC.ipynb" target="_blank" rel="noreferrer">See SMC experiment ↗</a></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section section-shell anc-examples">
+        <div class="case-label reveal"><p class="eyebrow">Selected experiments</p><span>03</span></div>
+        <div class="case-copy reveal">
+          <h2>From an adaptive filter to listening renders</h2>
+          <div class="anc-example-list">
+            <article><span>Multichannel FxLMS</span><p>A simulated arrangement with two reference microphones, four actuators and six error microphones. The notebook updates the control filters and plots the resulting error signal.</p><a href="https://github.com/JuanAldrey/ANC-practice-library/blob/main/notebooks/Multichannel/FxLMS.ipynb" target="_blank" rel="noreferrer">Open notebook ↗</a></article>
+            <article><span>Karl &amp; Sachau, 2024</span><p>Separate feedforward and feedback experiments adapt concepts from their paper on ANC at a partially open window. The notebooks render WAV files for three disturbances in a direct-sound room model.</p><div class="anc-example-links"><a href="https://github.com/JuanAldrey/ANC-practice-library/blob/main/notebooks/Multichannel/FWFxLMS-Karl-Sachau-2024.ipynb" target="_blank" rel="noreferrer">Feedforward ↗</a><a href="https://github.com/JuanAldrey/ANC-practice-library/blob/main/notebooks/Multichannel/FBFxLMS-Karl-Sachau-2024.ipynb" target="_blank" rel="noreferrer">Feedback ↗</a></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="anc-results section-block">
+        <div class="section-shell">
+          <div class="section-heading numbered-section-heading reveal"><div class="numbered-heading-label"><p class="eyebrow">Notebook outputs</p><span aria-hidden="true">04</span></div><h2>Examples from the simulations</h2></div>
+          <div class="anc-plot-grid reveal">
+            <figure><img src="../../assets/images/anc-fxlms-0.png" alt="Simulated multichannel FxLMS disturbance, control sound and residual error waveforms plotted over samples" loading="lazy"><figcaption>Multichannel FxLMS · disturbance, control sound and residual error in one simulation.</figcaption></figure>
+            <figure><img src="../../assets/images/anc-feedforward-2.png" alt="Noise reduction over time for one error microphone in the feedforward Karl and Sachau adaptation" loading="lazy"><figcaption>Feedforward adaptation · noise reduction at one error microphone for the selected WAV stimulus.</figcaption></figure>
+          </div>
+          <p class="anc-results-note reveal">Plots are outputs of individual notebook runs; their values depend on the simulated paths, stimulus and adaptation settings.</p>
+        </div>
+      </section>
+
+      <section class="case-section section-shell anc-scope">
+        <div class="case-label reveal"><p class="eyebrow">Scope</p><span>05</span></div>
+        <div class="case-copy reveal">
+          <h2>What the experiments establish</h2>
+          <p>The library is a way to study algorithm behavior, not a validated real-time ANC system. The Karl and Sachau examples use direct-sound paths (<code>max_order=0</code>), so their results do not establish performance in a reflective room.</p>
+          <p>The step size calculated using the method in that paper was very small in these simulations. I scaled it experimentally for each stimulus; finding an appropriate step size automatically remains an open task. One online secondary-path modeling notebook also records an unsuccessful experiment for diagnosis.</p>
+        </div>
+      </section>
+
+      <section class="report-section section-block"><div class="section-shell"><div class="report-callout reveal"><div><p class="eyebrow">Code and references</p><h3>Continue in the repository</h3><p>The README indexes the notebooks and sources, and the notebook introductions explain each experiment. There is no separate paper for this independent study.</p></div><a class="button button-primary" href="https://github.com/JuanAldrey/ANC-practice-library" target="_blank" rel="noreferrer">View repository ↗</a></div></div></section>
+
+      <nav class="project-pagination section-shell" aria-label="Project navigation">
+        <a href="../harmonic-tremolo/"><span>← Previous project</span><strong>Analog Harmonic Tremolo</strong></a>
+        <a href="../room-modal-optimizer/"><span>Next project →</span><strong>Room Modal Optimizer</strong></a>
+      </nav>
+    </main>
+    <footer class="site-footer section-shell"><div><span class="brand-mark">JA</span><p>Audio DSP · Acoustics · Embedded systems</p></div><div class="footer-links"><a href="https://github.com/JuanAldrey" target="_blank" rel="noreferrer">GitHub ↗</a><a href="#top">Back to top ↑</a></div><p class="copyright">© <span data-year></span> Juan Aldrey Alurralde</p></footer>
+  </body>
+</html>

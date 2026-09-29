@@ -142,6 +142,14 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
 .project-carousel-arrow:disabled { opacity: .35; cursor: default; }
 .project-carousel-arrow:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .project-card:hover { border-color: rgba(102,230,191,.55); transform: translateY(-4px); }
+.project-visual-anc { background: radial-gradient(circle at 78% 22%, #25433e, #132023 65%, #10181b); }
+.project-visual-anc .project-index { color: var(--accent); }
+.anc-card-diagram { width: 100%; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; color: var(--accent); font: .72rem/1.4 "SFMono-Regular", Consolas, monospace; letter-spacing: .07em; text-align: center; }
+.anc-card-source { width: 100%; color: var(--muted); }
+.anc-card-wave { width: 100%; font-size: 2rem; letter-spacing: .45em; }
+.anc-card-node, .anc-card-target { border: 1px solid rgba(102,230,191,.5); padding: 17px 12px; min-height: 66px; display: grid; place-items: center; }
+.anc-card-target b { font-size: 1rem; }
+.anc-card-arrow { font-size: 1.4rem; }
 .project-visual { position: relative; display: grid; place-items: center; min-height: 440px; padding: clamp(24px, 5vw, 70px); background: #f2f2ed; overflow: hidden; }
 .project-visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, transparent 60%, rgba(10,12,16,.08)); }
 .project-visual img { width: 100%; max-height: 420px; object-fit: contain; filter: contrast(1.04); }
@@ -373,6 +381,50 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
 .modal-convergence img { max-height: 350px; object-fit: contain; }
 .project-pagination:has(a + a) { grid-template-columns: 1fr 1fr; }
 .project-pagination:has(a + a) a:last-child { text-align: right; }
+
+/* ANC Practice Library */
+.anc-page .project-hero { align-items: center; padding-bottom: clamp(36px, 5vw, 64px); }
+.anc-page .project-hero h1 { font-size: clamp(3.6rem, 8vw, 7.3rem); }
+.anc-page .project-hero + .case-section { padding-top: clamp(54px, 7vw, 90px); }
+.anc-hero-side { display: grid; gap: 28px; }
+.anc-loop { padding: clamp(22px, 3vw, 36px); border: 1px solid var(--line-strong); background: radial-gradient(circle at 80% 10%, #203b36, var(--bg-elevated) 75%); font: .75rem/1.5 "SFMono-Regular", Consolas, monospace; }
+.anc-loop-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 18px; }
+.anc-loop-row span:first-child, .anc-loop-row span:nth-child(3):not(.anc-loop-line) { border: 1px solid var(--line-strong); padding: 10px; }
+.anc-loop-row:first-child { color: var(--text); }
+.anc-loop-row:nth-child(2) { color: var(--accent); }
+.anc-loop-line { color: var(--accent); white-space: nowrap; overflow: hidden; }
+.anc-loop-feedback { border-top: 1px solid var(--line); padding-top: 14px; color: var(--muted); text-align: right; }
+.anc-tracks, .anc-results { background: var(--bg-elevated); border-block: 1px solid var(--line); }
+.anc-track-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--line); }
+.anc-track-grid article { padding: clamp(24px, 3vw, 38px); border-right: 1px solid var(--line); display: flex; flex-direction: column; }
+.anc-track-grid article:last-child { border-right: 0; }
+.anc-track-grid article > span, .anc-example-list article > span { color: var(--accent); font: .72rem/1.4 "SFMono-Regular", Consolas, monospace; letter-spacing: .05em; text-transform: uppercase; }
+.anc-track-grid h3 { font-size: 1.5rem; margin: 22px 0 14px; }
+.anc-track-grid p, .anc-example-list p { color: var(--muted); }
+.anc-track-grid a, .anc-example-list a { color: var(--accent); font-size: .9rem; margin-top: auto; padding-top: 20px; }
+.anc-example-list { border-top: 1px solid var(--line); }
+.anc-example-list article { padding: 25px 0; border-bottom: 1px solid var(--line); }
+.anc-example-list p { margin: 12px 0 0; }
+.anc-example-links { display: flex; flex-wrap: wrap; gap: 24px; }
+.anc-plot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.anc-plot-grid figure { margin: 0; min-width: 0; background: #fff; }
+.anc-plot-grid img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; }
+.anc-plot-grid figcaption { padding: 14px 18px; background: var(--bg); color: var(--muted); font-size: .85rem; }
+.anc-results-note { color: var(--muted); margin: 25px 0 0; font-size: .9rem; }
+.anc-scope { border-bottom: 0; }
+.anc-scope code { font-size: .9em; color: var(--accent); }
+@media (max-width: 980px) {
+  .anc-track-grid { grid-template-columns: 1fr; }
+  .anc-track-grid article { border-right: 0; border-bottom: 1px solid var(--line); }
+  .anc-track-grid article:last-child { border-bottom: 0; }
+}
+@media (max-width: 680px) {
+  .anc-card-diagram { font-size: .56rem; gap: 5px; }
+  .anc-card-node, .anc-card-target { padding: 8px 5px; min-height: 50px; }
+  .anc-plot-grid { grid-template-columns: 1fr; }
+  .anc-loop { font-size: .62rem; }
+  .anc-loop-row { gap: 4px; }
+}
 @media (max-width: 980px) {
   .modal-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .modal-flow li { border-bottom: 1px solid var(--line); }
