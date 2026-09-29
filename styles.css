@@ -142,8 +142,8 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
 .project-carousel-arrow:disabled { opacity: .35; cursor: default; }
 .project-carousel-arrow:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .project-card:hover { border-color: rgba(102,230,191,.55); transform: translateY(-4px); }
-.project-visual-anc { background: radial-gradient(circle at 78% 22%, #25433e, #132023 65%, #10181b); }
-.project-visual-anc .project-index { color: var(--accent); }
+.project-visual.project-visual-anc { background: radial-gradient(circle at 78% 22%, #25433e, #132023 65%, #10181b); }
+.project-visual-anc .project-index { color: var(--accent); opacity: .7; z-index: 1; }
 .project-visual-anc .anc-diagram-image { width: 112%; max-width: none; max-height: none; filter: none; }
 .project-visual { position: relative; display: grid; place-items: center; min-height: 440px; padding: clamp(24px, 5vw, 70px); background: #f2f2ed; overflow: hidden; }
 .project-visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, transparent 60%, rgba(10,12,16,.08)); }
@@ -378,12 +378,15 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
 .project-pagination:has(a + a) a:last-child { text-align: right; }
 
 /* ANC Practice Library */
-.anc-page .project-hero { align-items: center; padding-bottom: clamp(36px, 5vw, 64px); }
-.anc-page .project-hero h1 { font-size: clamp(3.6rem, 8vw, 7.3rem); }
+.anc-page .project-hero { grid-template-columns: 1.05fr .95fr; gap: clamp(28px, 4vw, 60px); align-items: center; padding-bottom: clamp(36px, 5vw, 64px); }
+.anc-page .project-hero h1 { font-size: clamp(3.6rem, 6.4vw, 6.4rem); }
 .anc-page .project-hero + .case-section { padding-top: clamp(54px, 7vw, 90px); }
 .anc-hero-side { display: grid; gap: 28px; }
 .anc-loop { border: 1px solid var(--line-strong); background: #111b20; }
 .anc-loop img { display: block; width: 100%; height: auto; }
+@media (max-width: 980px) {
+  .anc-page .project-hero { grid-template-columns: 1fr; }
+}
 .anc-tracks, .anc-results { background: var(--bg-elevated); border-block: 1px solid var(--line); }
 .anc-track-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--line); }
 .anc-track-grid article { padding: clamp(24px, 3vw, 38px); border-right: 1px solid var(--line); display: flex; flex-direction: column; }
