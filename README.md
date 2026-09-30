@@ -4,7 +4,7 @@ Personal engineering portfolio hosted with GitHub Pages.
 
 ## Project pages
 
-- [Room Modal Optimizer](projects/room-modal-optimizer/) — computational room acoustics and optimization.
+- [Room Modes Optimizer](projects/room-modal-optimizer/) — computational room acoustics and optimization.
 - [ANC Practice Library](projects/anc-practice-library/) — independent study of active noise control algorithms.
 - [Analog Harmonic Tremolo](projects/harmonic-tremolo/) — analog audio effect designed and built with Antonella Croci.
 
