@@ -518,4 +518,3 @@ dd { margin: 0; font-size: .86rem; color: var(--text); }
 .delay-board-controls button:hover, .delay-board-controls button:focus-visible { border-color: var(--accent); color: var(--accent); }
 @media (max-width: 900px) { .delay-page .delay-plot-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media (max-width: 600px) { .delay-flow-frame { padding: 10px; } .delay-board-track figure { flex-basis: 84%; padding: 14px; } .delay-board-track { gap: 14px; } .delay-board-track img { height: 280px; } .delay-page .delay-plot-grid { gap: 12px; } }
-
