@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 430" role="img" aria-labelledby="title desc">
+  <title id="title">Embedded ANC prototype</title>
+  <desc id="desc">Reference and error microphones connect to an STM32 microcontroller running block FxLMS. The processed signal goes to the control-speaker output.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M1 1L6 4L1 7" fill="none" stroke="#66e6bf" stroke-width="1.5"/></marker>
+  </defs>
+  <rect width="640" height="430" fill="#11151b"/>
+  <path d="M36 83H604M36 360H604" stroke="#a3abb2" stroke-opacity=".16"/>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <text x="36" y="55" fill="#66e6bf" font-size="17" letter-spacing="2">EMBEDDED ANC</text>
+    <g fill="none" stroke="#66e6bf" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="88" y="128" width="24" height="39" rx="12"/>
+      <path d="M80 147V156A20 20 0 0 0 120 156V147M100 176V188M88 188H112"/>
+      <rect x="88" y="244" width="24" height="39" rx="12"/>
+      <path d="M80 263V272A20 20 0 0 0 120 272V263M100 292V304M88 304H112"/>
+    </g>
+    <g fill="#a3abb2" font-family="Consolas,monospace" font-size="17" text-anchor="middle">
+      <text x="100" y="216">REF</text>
+      <text x="100" y="332">ERR</text>
+    </g>
+    <g fill="none" stroke="#66e6bf" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow)">
+      <path d="M139 158H185V176H219"/>
+      <path d="M139 274H185V264H219"/>
+      <path d="M463 220H486"/>
+    </g>
+    <g stroke="#66e6bf" stroke-width="3" stroke-opacity=".65">
+      <path d="M220 148H236M220 176H236M220 204H236M220 236H236M220 264H236M220 292H236"/>
+      <path d="M446 148H462M446 176H462M446 204H462M446 236H462M446 264H462M446 292H462"/>
+      <path d="M264 107V123M294 107V123M324 107V123M358 107V123M388 107V123M418 107V123"/>
+      <path d="M264 317V333M294 317V333M324 317V333M358 317V333M388 317V333M418 317V333"/>
+    </g>
+    <rect x="236" y="123" width="210" height="194" rx="8" fill="#0a0c10" stroke="#66e6bf" stroke-width="2"/>
+    <circle cx="252" cy="140" r="3" fill="#66e6bf"/>
+    <text x="341" y="197" fill="#f2f4ef" font-size="32" font-weight="600" text-anchor="middle">STM32</text>
+    <text x="341" y="237" fill="#66e6bf" font-size="23" font-weight="500" text-anchor="middle">Block FxLMS</text>
+    <path d="M264 258H418" stroke="#a3abb2" stroke-opacity=".2"/>
+    <text x="341" y="286" fill="#a3abb2" font-size="16" text-anchor="middle">C · I2S · DMA</text>
+    <g fill="none" stroke="#66e6bf" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M499 201H514L535 183V257L514 239H499Z"/>
+      <path d="M547 203Q561 220 547 237M558 192Q581 220 558 248"/>
+    </g>
+    <g fill="#a3abb2" font-size="15" text-anchor="middle" letter-spacing="1">
+      <text x="535" y="294">CONTROL</text>
+      <text x="535" y="316">OUTPUT</text>
+    </g>
+    <text x="36" y="395" fill="#a3abb2" font-size="15">Microphones → adaptive processing → loudspeaker</text>
+  </g>
+</svg>
