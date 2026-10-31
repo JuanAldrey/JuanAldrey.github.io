@@ -1,0 +1,69 @@
+/* Page-specific additions to the existing portfolio design. */
+.embedded-page { --embedded-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+.embedded-page main > section { scroll-margin-top: 32px; }
+.embedded-page .project-hero { grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: clamp(36px, 6vw, 90px); align-items: center; padding-bottom: clamp(48px, 7vw, 88px); }
+.embedded-page .project-hero h1 { font-size: clamp(3.4rem, 6vw, 5.8rem); }
+.embedded-intro { color: var(--muted); max-width: 62ch; font-size: 1.05rem; }
+.embedded-hero-side { min-width: 0; }
+.embedded-status { color: var(--accent); font: .78rem/1.5 var(--embedded-mono); text-transform: uppercase; letter-spacing: .08em; padding: 0 0 22px; }
+.embedded-jump-links { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 30px; font-size: .88rem; }
+.embedded-jump-links a { padding-bottom: 5px; border-bottom: 1px solid var(--line-strong); }
+.embedded-jump-links a:hover { color: var(--accent); border-color: var(--accent); }
+.embedded-page .case-section { padding-block: clamp(54px, 7vw, 92px); }
+.embedded-page .case-copy h2 { font-size: clamp(2.25rem, 4vw, 3.6rem); margin-bottom: 28px; }
+.embedded-page .case-copy a:not(.text-link) { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+.embedded-page .case-copy .text-link { display: inline-block; margin-top: 16px; color: var(--accent); }
+.embedded-section { padding-block: clamp(56px, 8vw, 100px); }
+.embedded-page .section-heading { margin-bottom: 38px; }
+.embedded-page .section-heading h2 { font-size: clamp(2.25rem, 4vw, 3.6rem); }
+.embedded-page .numbered-heading-label { min-height: 100px; }
+.embedded-figure { margin: 0; min-width: 0; }
+.embedded-scroll { overflow-x: auto; border: 1px solid var(--line); background: var(--bg-elevated); scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; }
+.embedded-scroll img { display: block; width: 100%; height: auto; }
+.embedded-flow-image { min-width: 740px; }
+.embedded-pan-hint { display: none; margin: 8px 0 0; color: var(--accent); font-size: .8rem; }
+.embedded-page figcaption { color: var(--muted); font-size: .73rem; line-height: 1.7; letter-spacing: .025em; text-transform: none; margin-top: 14px; }
+.embedded-components { margin: 34px 0 0; }
+.embedded-components > div { display: grid; grid-template-columns: .34fr 1fr; gap: clamp(20px, 5vw, 80px); padding: 24px 0; border-top: 1px solid var(--line); }
+.embedded-components dt { color: var(--accent); padding-top: 5px; }
+.embedded-components dd { margin: 0; }
+.embedded-components strong { display: block; font-size: 1.14rem; font-weight: 600; margin-bottom: 5px; }
+.embedded-components dd span { color: var(--muted); font-size: .95rem; }
+.embedded-decisions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 34px; padding-top: 34px; border-top: 1px solid var(--line); }
+.embedded-decisions h3 { font-size: 1.5rem; line-height: 1.2; margin-bottom: 18px; }
+.embedded-decisions p:not(.eyebrow) { color: var(--muted); font-size: .95rem; }
+.embedded-measurement { margin-top: 32px; border-left: 2px solid var(--accent); padding-left: clamp(20px, 3vw, 38px); max-width: 850px; }
+.embedded-measurement h3 { font-size: 1.65rem; }
+.embedded-measurement p:last-child { color: var(--muted); margin-bottom: 0; }
+.embedded-progress { background: var(--bg-elevated); border-block: 1px solid var(--line); }
+.embedded-progress-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 70px); }
+.embedded-progress-grid p { color: var(--muted); }
+.embedded-progress-grid strong { color: var(--text); font-weight: 650; }
+.embedded-progress-grid .embedded-section-lead { font-size: 1.1rem; }
+.embedded-next { padding-left: 28px; border-left: 2px solid var(--accent); }
+.embedded-next .eyebrow { color: var(--accent); }
+.embedded-next h3 { font-size: clamp(1.7rem, 2.4vw, 2.1rem); line-height: 1.15; }
+.embedded-milestones { display: grid; grid-template-columns: .65fr 1fr; gap: clamp(28px, 5vw, 70px); margin-top: 40px; }
+.embedded-milestones h3 { font-size: 1.55rem; line-height: 1.25; }
+.embedded-milestones ol { margin: 0; padding-left: 24px; color: var(--muted); }
+.embedded-milestones li { padding-left: 6px; margin-bottom: 14px; }
+.embedded-milestones li::marker { color: var(--accent); font-family: var(--embedded-mono); }
+.embedded-updated { margin: 30px 0 0; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .8rem; }
+.embedded-skip { position: absolute; top: -80px; left: 16px; background: var(--accent); color: var(--bg); padding: 12px 20px; z-index: 30; }
+.embedded-skip:focus { top: 12px; }
+.embedded-page a:focus-visible, .embedded-page .embedded-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+@media (max-width: 980px) {
+  .embedded-page .project-hero, .embedded-progress-grid { grid-template-columns: 1fr; }
+  .embedded-hero-side { max-width: 700px; }
+  .embedded-page .numbered-heading-label { min-height: 0; }
+  .embedded-decisions { grid-template-columns: 1fr; gap: 20px; }
+  .embedded-decisions article + article { padding-top: 20px; border-top: 1px solid var(--line); }
+  .embedded-milestones { grid-template-columns: 1fr; gap: 12px; }
+}
+@media (max-width: 600px) {
+  .embedded-page .project-hero h1 { font-size: clamp(3rem, 13vw, 4.5rem); }
+  .embedded-components > div { grid-template-columns: 1fr; gap: 10px; }
+  .embedded-next { padding-left: 20px; }
+  .embedded-page .site-footer > div:first-child { align-items: flex-start; }
+}
+@media (max-width: 760px) { .embedded-pan-hint { display: block; } }

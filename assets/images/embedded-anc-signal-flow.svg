@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 430" role="img" aria-labelledby="title desc">
+  <title id="title">Embedded ANC system architecture</title>
+  <desc id="desc">Two INMP441 microphones provide reference and error signals to an STM32F446RE. The microcontroller runs block FxLMS using CMSIS-DSP and handles I2S audio through circular DMA. Its output goes to a PCM5102 DAC, an amplifier, and the control loudspeaker.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 1L7 4.5L0 8" fill="none" stroke="#66e6bf" stroke-width="1.5"/></marker>
+  </defs>
+  <rect width="1120" height="430" fill="#11151b"/>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <text x="36" y="43" fill="#66e6bf" font-size="15" letter-spacing="2">SYSTEM ARCHITECTURE</text>
+    <text x="36" y="73" fill="#a3abb2" font-size="18">Microphones → STM32 processing → audio output</text>
+    <g fill="#151a21" stroke="#53616b" stroke-width="1.2">
+      <rect x="36" y="125" width="210" height="95" rx="4"/>
+      <rect x="36" y="255" width="210" height="95" rx="4"/>
+      <rect x="303" y="125" width="300" height="225" rx="4"/>
+      <rect x="660" y="190" width="150" height="95" rx="4"/>
+      <rect x="867" y="190" width="217" height="95" rx="4"/>
+    </g>
+    <g fill="#f2f4ef" font-size="23" font-weight="600" text-anchor="middle">
+      <text x="141" y="162">REF microphone</text>
+      <text x="141" y="292">ERR microphone</text>
+      <text x="453" y="162">STM32F446RE</text>
+      <text x="735" y="228">PCM5102</text>
+      <text x="975" y="228">Amplifier</text>
+    </g>
+    <g fill="#a3abb2" font-size="17" text-anchor="middle">
+      <text x="141" y="192">INMP441</text>
+      <text x="141" y="322">INMP441</text>
+      <text x="453" y="190">C firmware</text>
+      <text x="453" y="325">I2S · PCM24 · circular DMA</text>
+      <text x="735" y="258">I2S DAC</text>
+      <text x="975" y="258">Control loudspeaker</text>
+    </g>
+    <rect x="327" y="211" width="252" height="82" rx="4" fill="#11151b" stroke="#66e6bf" stroke-width="1.2"/>
+    <text x="453" y="244" fill="#f2f4ef" font-size="25" font-weight="600" text-anchor="middle">Block FxLMS</text>
+    <text x="453" y="273" fill="#a3abb2" font-size="18" text-anchor="middle">CMSIS-DSP</text>
+    <g fill="none" stroke="#66e6bf" stroke-width="2" marker-end="url(#arrow)">
+      <path d="M246 172H291"/>
+      <path d="M246 302H291"/>
+      <path d="M603 237H648"/>
+      <path d="M810 237H855"/>
+    </g>
+  </g>
+</svg>
