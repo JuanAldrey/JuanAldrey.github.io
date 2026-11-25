@@ -23,7 +23,7 @@
       <text x="470" y="345">48 kHz output · interpolate ×6 + filter</text>
       <text x="470" y="209">48 kHz input · filter + decimate ÷6</text>
       <text x="999" y="361">Control loudspeaker</text>
-      <text x="36" y="420">I2S and DMA keep the 48 kHz transport running around the 8 kHz processing chain.</text>
+      <text x="36" y="420" text-anchor="start">I2S and DMA keep the 48 kHz transport running around the 8 kHz processing chain.</text>
     </g>
     <rect x="309" y="230" width="322" height="83" rx="4" fill="#11151b" stroke="#66e6bf" stroke-width="1.2"/>
     <text x="470" y="262" fill="#f2f4ef" font-size="23" font-weight="600" text-anchor="middle">Time-domain FxLMS · 8 kHz</text>
