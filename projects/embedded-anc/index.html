@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A preliminary project for Juan Aldrey Alurralde's thesis: developing practical knowledge of embedded ANC through STM32 firmware, acoustic measurements, and hardware profiling. Work in progress.">
+    <meta name="description" content="An STM32 ANC prototype with 48 kHz I2S audio, an 8 kHz time-domain FxLMS controller, measured acoustic models, and isolated hardware benchmarks. Acoustic validation is the next stage.">
     <meta name="theme-color" content="#0a0c10">
     <title>Embedded ANC Prototype — Juan Aldrey Alurralde</title>
-    <link rel="stylesheet" href="../../styles.css?v=20261031">
-    <link rel="stylesheet" href="embedded-anc.css?v=20261031">
+    <link rel="stylesheet" href="../../styles.css?v=20261125">
+    <link rel="stylesheet" href="embedded-anc.css?v=20261125">
     <script src="../../script.js" defer></script>
   </head>
   <body id="top" class="project-page embedded-page">
@@ -22,17 +22,18 @@
         <div>
           <p class="eyebrow">Embedded audio DSP · 2026</p>
           <h1>Embedded ANC<br>Prototype</h1>
-          <p class="project-lead">Taking adaptive audio algorithms from simulation to a physical demonstrator.</p>
-          <p class="embedded-intro">A preliminary project for my thesis: developing the practical knowledge needed to build a real ANC system and use it as the foundation for a more ambitious thesis project.</p>
-          <nav class="embedded-jump-links" aria-label="On this page"><a href="#intent">Intent</a><a href="#architecture">Architecture</a><a href="#progress">Current progress</a></nav>
+          <p class="project-lead">Implementing an adaptive noise controller on STM32.</p>
+          <p class="embedded-intro">Preliminary work for my thesis, taking an ANC algorithm from theory and simulation into C firmware, audio hardware, and acoustic measurements.</p>
+          <div class="project-actions"><a class="button button-primary" href="https://github.com/JuanAldrey/ANC" target="_blank" rel="noreferrer">Explore the firmware ↗</a></div>
+          <nav class="embedded-jump-links" aria-label="On this page"><a href="#architecture">Architecture</a><a href="#controller">Controller</a><a href="#benchmarks">Benchmarks</a><a href="#progress">Validation status</a></nav>
         </div>
         <aside class="embedded-hero-side" aria-label="Project at a glance">
           <div class="embedded-status"><span class="status-dot" aria-hidden="true"></span>In development</div>
           <dl class="project-facts">
-            <div><dt>Platform</dt><dd>NUCLEO-F446RE<br>Cortex-M4F</dd></div>
-            <div><dt>Firmware</dt><dd>C · Bare metal<br>CMSIS-DSP</dd></div>
-            <div><dt>Audio</dt><dd>Two MEMS mics<br>I2S · 24-bit PCM</dd></div>
-            <div><dt>Current focus</dt><dd>Lower-rate DSP<br>Real-time budget</dd></div>
+            <div><dt>Platform</dt><dd>NUCLEO-F446RE<br>168 MHz nominal</dd></div>
+            <div><dt>Firmware</dt><dd>C · Register-level I/O<br>CMSIS-DSP FIR</dd></div>
+            <div><dt>Sample rates</dt><dd>48 kHz audio I/O<br>8 kHz controller</dd></div>
+            <div><dt>Current stage</dt><dd>Isolated benchmarks complete<br>Live audio validation next</dd></div>
           </dl>
         </aside>
       </section>
@@ -40,67 +41,96 @@
       <section id="intent" class="case-section section-shell">
         <div class="case-label"><p class="eyebrow">Intent</p><span aria-hidden="true">01</span></div>
         <div class="case-copy">
-          <h2>From understanding an algorithm to building its system.</h2>
-          <p>This prototype is a preliminary project for my thesis. Its purpose is to develop practical knowledge of how to build a real ANC system, providing a foundation for a more ambitious thesis project.</p>
-          <p>After studying and simulating active noise control in my <a href="../anc-practice-library/">ANC Practice Library</a>, I started this demonstrator to carry that work into hardware. The process connects algorithm implementation, audio electronics, acoustic measurements, and design decisions shaped by the microcontroller’s timing and memory limits.</p>
-          <p>The target is a single-channel feedforward ANC demonstrator. A reference microphone senses the disturbance, an error microphone monitors the target location, and an adaptive filter will drive a control loudspeaker to reduce the residual sound there.</p>
-          <p>This makes the project an exercise in both DSP and implementation: the filter equations have to coexist with audio formats, peripheral timing, acoustic propagation, memory limits, and a deadline for every block.</p>
-          <a class="text-link" href="../anc-practice-library/">Explore the simulation work that led here <span>→</span></a>
+          <h2>Learning to build a real ANC system</h2>
+          <p>After studying and simulating active noise control in my <a href="../anc-practice-library/">ANC Practice Library</a>, I started this prototype to carry that work into hardware. It is preliminary work for my thesis: a way to develop the practical experience needed for a more ambitious research project.</p>
+          <p>The target is a single-channel feedforward demonstrator. A reference microphone senses the disturbance, an error microphone monitors the target location, and an adaptive controller generates the loudspeaker signal. Building it means making the algorithm work within the limits of audio timing, acoustic propagation, memory, and processing time.</p>
         </div>
       </section>
 
       <section id="architecture" class="embedded-section section-shell">
-        <div class="section-heading numbered-section-heading"><div class="numbered-heading-label"><p class="eyebrow">Architecture</p><span aria-hidden="true">02</span></div><h2>A small platform with direct control of the audio path.</h2></div>
+        <div class="section-heading numbered-section-heading"><div class="numbered-heading-label"><p class="eyebrow">Audio architecture</p><span aria-hidden="true">02</span></div><h2>48 kHz audio with an 8 kHz controller</h2></div>
         <figure class="embedded-figure">
-          <div class="embedded-scroll" tabindex="0" role="region" aria-label="Audio architecture diagram. Scroll horizontally on small screens."><img class="embedded-flow-image" src="../../assets/images/embedded-anc-signal-flow.svg" width="1120" height="430" alt="System architecture. Reference and error INMP441 microphones feed the STM32F446RE, which runs block FxLMS with CMSIS-DSP. The output goes through a PCM5102 I2S DAC to the amplifier and control loudspeaker."></div>
+          <div class="embedded-scroll" tabindex="0" role="region" aria-label="Hardware architecture diagram. Scroll horizontally on small screens."><img class="embedded-flow-image" src="../../assets/images/embedded-anc-signal-flow.svg?v=20261125" width="1120" height="450" alt="Two INMP441 microphones send reference and error PCM24 audio at 48 kHz through I2S and DMA to an STM32F446RE. The STM32 converts to 8 kHz for time-domain FxLMS, then back to 48 kHz for a PCM5102 DAC, TDA2030 amplifier, and control loudspeaker. Microphones and DAC share the audio clock."></div>
           <p class="embedded-pan-hint">Scroll diagram horizontally →</p>
         </figure>
-
         <dl class="embedded-components">
-          <div><dt>Acquisition</dt><dd><strong>Two INMP441 MEMS microphones</strong><span>Reference and error channels, with 24-bit PCM carried over I2S.</span></dd></div>
-          <div><dt>Processing</dt><dd><strong>STM32F446RE on a NUCLEO board</strong><span>Cortex-M4F at a nominal 168 MHz, with 128 KiB RAM.</span></dd></div>
-          <div><dt>Output</dt><dd><strong>PCM5102 DAC, TDA amplifier, and loudspeaker</strong><span>The DAC converts the I2S output for the amplifier and control loudspeaker.</span></dd></div>
+          <div><dt>Acquisition</dt><dd><strong>Two INMP441 MEMS microphones</strong><span>Reference and error channels share the audio clock with the DAC. Acquisition and playback stay at 48 kHz through I2S and circular DMA.</span></dd></div>
+          <div><dt>Processing</dt><dd><strong>NUCLEO-F446RE · STM32F446RE</strong><span>Each DMA half-buffer holds 48 samples per channel. Conversion produces eight samples per channel for FxLMS, while the block interval stays at 1 ms.</span></dd></div>
+          <div><dt>Output</dt><dd><strong>PCM5102 DAC, TDA2030 amplifier, and control loudspeaker</strong><span>The controller output is interpolated and filtered before returning to PCM24 at 48 kHz for the DAC.</span></dd></div>
         </dl>
-
-        <div class="embedded-decisions">
-          <article><p class="eyebrow">Firmware</p><h3>C and register-level audio configuration</h3><p>The audio peripherals and DMA are configured directly through MCU registers. The application runs without an RTOS. DMA interrupts flag completed buffer halves for handling in the main loop.</p></article>
-          <article><p class="eyebrow">Scheduling</p><h3>Continuous I/O, processing in blocks</h3><p>Circular DMA moves audio while the CPU handles completed blocks. The current transport uses 48 stereo frames per half-buffer: a nominal 1 ms processing interval at 48 kHz.</p></article>
-          <article><p class="eyebrow">DSP</p><h3>Block FxLMS with CMSIS-DSP</h3><p>The C kernel includes adaptive filtering, acoustic feedback compensation, overlap-save secondary-path filtering, and FFT-based coefficient updates.</p></article>
-        </div>
-
-        <div class="embedded-measurement">
-          <p class="eyebrow">Connecting measurements to firmware</p>
-          <h3>Use the measured acoustic paths.</h3>
-          <p>I measured the control speaker’s paths to both microphones using REW and a Focusrite interface. The export workflow turns those impulse responses into float32 C coefficients, preserving their arrival times and relative gain through a common electrical loopback correction. The linked firmware coefficients were checked against the exported arrays.</p>
+        <div class="embedded-conversion">
+          <h3>Sample-rate conversion</h3>
+          <div class="embedded-scroll" tabindex="0" role="region" aria-label="Sample-rate conversion pipeline. Scroll horizontally on small screens.">
+            <ol class="embedded-rate-path" aria-label="Implemented processing pipeline">
+              <li><strong>PCM24 input</strong><span>48 kHz · REF + ERR</span></li>
+              <li><strong>Float + antialias</strong><span>Low-pass filtering</span></li>
+              <li><strong>Decimate ÷6</strong><span>48 → 8 samples</span></li>
+              <li class="embedded-rate-core"><strong>FxLMS</strong><span>8 kHz · 8 samples</span></li>
+              <li><strong>Interpolate ×6</strong><span>8 → 48 samples</span></li>
+              <li><strong>Reconstruct</strong><span>Low-pass filtering</span></li>
+              <li><strong>PCM24 output</strong><span>48 kHz · DAC</span></li>
+            </ol>
+          </div>
+          <p class="embedded-pan-hint">Scroll signal chain horizontally →</p>
+          <p>The conversion filters are eighth-order Chebyshev II designs, each implemented as four cascaded biquads in transposed direct form II. REF, ERR, and output have independent filter states. The converter passed numerical comparison against a reference implementation.</p>
         </div>
       </section>
 
-      <section id="progress" class="embedded-progress">
-        <div class="section-shell embedded-section">
-          <div class="section-heading numbered-section-heading"><div class="numbered-heading-label"><p class="eyebrow">Current progress</p><span aria-hidden="true">03</span></div><h2>The next step is reducing the PCM processing rate.</h2></div>
-          <div class="embedded-progress-grid">
-            <div>
-              <p class="embedded-section-lead">The audio path works in passthrough, the FxLMS code is implemented, and measured acoustic models are loaded into the firmware. The controller has also been run on the STM32 in a separate benchmark.</p>
-              <p>Those tests showed that the current implementation takes too long to process the measured models at 48 kHz. The next step is to reduce the processing rate before integrating and testing adaptive cancellation in the live audio loop.</p>
-            </div>
-            <div class="embedded-next">
-              <p class="eyebrow">Next step</p>
-              <h3>Downsample the MEMS PCM for the controller.</h3>
-              <p>Keep I2S input and output at their nominal 48 kHz rate, filter and decimate both microphone signals, run FxLMS at a lower rate, then interpolate its output for the DAC. The first candidate is 8 kHz. The final choice will depend on the control band, processing cost, and added filter delay.</p>
-              <p>Both microphone channels need synchronized conversion with separate filter states. The complete chain must then be timed, its effective acoustic paths re-identified, and its latency checked before enabling live adaptation.</p>
-            </div>
+      <section id="controller" class="embedded-controller-section">
+        <div class="embedded-section section-shell">
+          <div class="section-heading numbered-section-heading"><div class="numbered-heading-label"><p class="eyebrow">Engineering decisions</p><span aria-hidden="true">03</span></div><h2>Moving the controller to the time domain</h2></div>
+          <p class="embedded-wide-lead">Reducing the sample rate lowered the workload, but the earlier FFT-based implementation was still too costly. I then moved filtering and adaptation entirely to the time domain.</p>
+          <div class="embedded-decisions">
+            <article><p class="eyebrow">G · Secondary path</p><h3>Filter the reference for adaptation</h3><p>The model of the control speaker’s path to ERR is applied with the CMSIS-DSP FIR implementation, producing the filtered reference used to update the controller.</p></article>
+            <article><p class="eyebrow">F · Acoustic feedback</p><h3>Compensate the reference signal</h3><p>A custom time-domain filter models the control speaker’s contribution at REF, allowing that contribution to be removed from the measured reference.</p></article>
+            <article><p class="eyebrow">W · Adaptive controller</p><h3>Generate and adapt the output</h3><p>W is applied in time. Its coefficients are updated through direct block correlation between the error and filtered reference, using a history of samples.</p></article>
           </div>
-
-          <div class="embedded-milestones">
-            <h3>What remains before a cancellation demonstration</h3>
-            <ol>
-              <li>Implement and validate anti-alias filtering, decimation, and output interpolation.</li>
-              <li>Benchmark the complete chain, then revisit the acoustic models and geometry with the new latency.</li>
-              <li>Integrate the controller into live DMA audio and measure the residual error with adaptation enabled.</li>
-            </ol>
+          <div class="embedded-measurement">
+            <p class="eyebrow">A standalone firmware project</p><h3>Simplifying the implementation</h3>
+            <p>The new <code>ANC</code> project is separate from the preserved <code>I2S_USB</code> version. USB, USB Audio, HAL, and FFT dependencies were removed. Clock, I2S, and DMA configuration use peripheral registers. <code>PASSTHROUGH</code>, <code>DAC_TONE</code>, and <code>ANC</code> modes are selected in <code>appConfig.h</code>.</p>
           </div>
-          <p class="embedded-updated">Project status reviewed <time datetime="2026-10-31">October 31, 2026</time>.</p>
         </div>
+      </section>
+
+      <section id="benchmarks" class="embedded-progress">
+        <div class="section-shell embedded-section">
+          <div class="section-heading numbered-section-heading"><div class="numbered-heading-label"><p class="eyebrow">Processing results</p><span aria-hidden="true">04</span></div><h2>Finding a configuration within the block budget</h2></div>
+          <p class="embedded-wide-lead">Benchmarks on the STM32, compiled with <code>-O3</code>, include the complete sample-rate conversion chain. Comparing implementations with the same synthetic G30/F441/W471 profile shows the effect of changing the controller architecture.</p>
+          <figure class="embedded-timing-figure">
+            <figcaption>Architecture comparison · same synthetic filter profile · observed maximum per call</figcaption>
+            <div class="embedded-timing-chart">
+              <div class="embedded-budget-label" aria-hidden="true">1 ms budget</div>
+              <div class="embedded-timing-row"><span>FFT-based</span><div class="embedded-timing-track"><i style="width:91.96%"></i></div><strong>2.115 ms</strong></div>
+              <div class="embedded-timing-row"><span>Mixed</span><div class="embedded-timing-track"><i style="width:66.91%"></i></div><strong>1.539 ms</strong></div>
+              <div class="embedded-timing-row embedded-timing-best"><span>Time-domain</span><div class="embedded-timing-track"><i style="width:31.22%"></i></div><strong>0.718 ms</strong></div>
+            </div>
+          </figure>
+          <div class="embedded-candidate">
+            <div><p class="eyebrow">Selected candidate · larger filters at 8 kHz</p><h3>G64 / F512 / W576</h3><p>64 coefficients for G, 512 for F, and 576 for W.</p><p>No call exceeded the 1 ms budget across the 256 measured blocks.</p></div>
+            <div class="embedded-result"><strong>0.888 <span>ms</span></strong><p>Observed maximum calculation time per call<br>1 ms block budget</p></div>
+          </div>
+          <div class="embedded-benchmark-scope"><h3>What this benchmark establishes</h3><p>This is an isolated processing result with synthetic coefficients, interrupts masked, and audio and DMA inactive. It identifies a candidate that fits the calculation budget. Sustained execution with live audio and the measured models still needs to be tested.</p><p>The 0.888 ms figure is calculation time, not total system latency or a formal worst-case execution-time guarantee.</p></div>
+        </div>
+      </section>
+
+      <section id="progress" class="section-shell embedded-section">
+        <div class="section-heading numbered-section-heading"><div class="numbered-heading-label"><p class="eyebrow">Models and validation</p><span aria-hidden="true">05</span></div><h2>Preparing the acoustic test</h2></div>
+        <div class="embedded-progress-grid">
+          <div>
+            <h3>Measured paths in the firmware</h3>
+            <p>The geometry was rebuilt and the paths to REF and ERR were measured again with REW and a loopback timing reference. A new electrical loopback measurement corrected the Focusrite gain scale at its current settings.</p>
+            <p>The 48 kHz impulse responses were converted offline to equivalent 8 kHz models, including the firmware’s conversion filters. Time origin and polarity were preserved, and differences in sweep level were compensated.</p>
+            <p>The active model windows are <code>G[0:64]</code> and <code>F[0:512]</code>, with 576 coefficients for W. Longer source tables are retained so the cuts can be changed in CubeIDE.</p>
+          </div>
+          <div class="embedded-next">
+            <p class="eyebrow">Current validation status</p><h3>Acoustic cancellation is the next stage</h3>
+            <p>Sample-rate conversion, the time-domain controller, and measured-model loading are implemented. Basic DAC and both microphone passthrough tests worked on hardware. A clean checkout builds in Debug and Release, and the linked model coefficients were checked.</p>
+            <p><strong>The new measured-model configuration has not yet been flashed for a cancellation test. Acoustic cancellation on the complete hardware system remains unvalidated.</strong></p>
+          </div>
+        </div>
+        <div class="embedded-milestones"><h3>Next hardware checks</h3><ol><li>Verify the adaptation sign and the models’ timing equivalence at the controller’s physical ports.</li><li>Measure sustained processing with audio and DMA active.</li><li>Begin physical cancellation tests in the 100–500 Hz band.</li></ol></div>
+        <div class="embedded-repository"><div><p class="eyebrow">Public firmware</p><h3>Explore the ANC project</h3><p>The repository includes the CubeIDE project, CMSIS, model coefficients, and provenance data. Original REW measurements and benchmark programs are archived separately.</p></div><a class="button button-primary" href="https://github.com/JuanAldrey/ANC" target="_blank" rel="noreferrer">View repository ↗</a></div>
+        <p class="embedded-updated">Project status reviewed <time datetime="2026-11-25">November 25, 2026</time>.</p>
       </section>
 
       <nav class="project-pagination section-shell" aria-label="Project navigation">
@@ -111,3 +141,4 @@
     <footer class="site-footer section-shell"><div><span class="brand-mark">JA</span><p>Audio DSP · Acoustics · Embedded systems</p></div><div class="footer-links"><a href="https://github.com/JuanAldrey" target="_blank" rel="noreferrer">GitHub ↗</a><a href="#top">Back to top ↑</a></div><p class="copyright">© <span data-year></span> Juan Aldrey Alurralde</p></footer>
   </body>
 </html>
+
