@@ -19,14 +19,14 @@
     <g fill="#a3abb2" font-size="16" text-anchor="middle">
       <text x="133" y="159">INMP441</text><text x="133" y="307">INMP441</text>
       <text x="470" y="160">NUCLEO-F446RE · C firmware</text><text x="785" y="232">I2S DAC</text><text x="999" y="232">Power amplifier</text>
-      <text x="470" y="306">I2S · circular DMA</text><text x="999" y="331">Control loudspeaker</text>
+      <text x="470" y="306">I2S · circular DMA</text><text x="999" y="357">Control loudspeaker</text>
     </g>
     <rect x="309" y="185" width="322" height="83" rx="4" fill="#11151b" stroke="#66e6bf" stroke-width="1.2"/>
     <text x="470" y="219" fill="#f2f4ef" font-size="24" font-weight="600" text-anchor="middle">Feedforward FxLMS</text>
     <text x="470" y="247" fill="#a3abb2" font-size="16" text-anchor="middle">Acoustic feedback compensation</text>
     <g fill="none" stroke="#66e6bf" stroke-width="2" marker-end="url(#arrow)"><path d="M231 139H273"/><path d="M231 287H273"/><path d="M655 213H698"/><path d="M860 213H902"/><path d="M999 258V284"/></g>
-    <path d="M981 288H991L1006 276V316L991 304H981Z" fill="none" stroke="#66e6bf" stroke-width="2"/>
-    <path d="M1016 285Q1028 296 1016 307" fill="none" stroke="#66e6bf" stroke-width="2"/>
+    <path transform="translate(0 25)" d="M981 288H991L1006 276V316L991 304H981Z" fill="none" stroke="#66e6bf" stroke-width="2"/>
+    <path transform="translate(0 25)" d="M1016 285Q1028 296 1016 307" fill="none" stroke="#66e6bf" stroke-width="2"/>
     <text x="36" y="382" fill="#a3abb2" font-size="16">Microphones and DAC share the audio clock.</text>
   </g>
 </svg>
