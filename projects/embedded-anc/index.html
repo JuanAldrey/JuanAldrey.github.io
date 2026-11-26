@@ -6,8 +6,8 @@
     <meta name="description" content="A feedforward active noise control prototype combining STM32 firmware, synchronized audio acquisition, adaptive filtering, and measured acoustic paths. Preliminary work for a thesis.">
     <meta name="theme-color" content="#0a0c10">
     <title>Embedded ANC Prototype — Juan Aldrey Alurralde</title>
-    <link rel="stylesheet" href="../../styles.css?v=20261126">
-    <link rel="stylesheet" href="embedded-anc.css?v=20261126">
+    <link rel="stylesheet" href="../../styles.css?v=20261126b">
+    <link rel="stylesheet" href="embedded-anc.css?v=20261126b">
     <script src="../../script.js" defer></script>
   </head>
   <body id="top" class="project-page embedded-page">
@@ -50,7 +50,7 @@
       <section id="architecture" class="embedded-section section-shell">
         <div class="section-heading numbered-section-heading"><div class="numbered-heading-label"><p class="eyebrow">System architecture</p><span aria-hidden="true">02</span></div><h2>Acquisition, processing, and playback</h2></div>
         <figure class="embedded-figure">
-          <div class="embedded-scroll" tabindex="0" role="region" aria-label="Hardware architecture diagram. Scroll horizontally on small screens."><img class="embedded-flow-image" src="../../assets/images/embedded-anc-signal-flow.svg?v=20261126" width="1120" height="410" alt="Reference and error INMP441 microphones feed an STM32F446RE running FxLMS with acoustic feedback compensation. Its output passes through a PCM5102 DAC and TDA2030 amplifier to the control loudspeaker. Microphones and DAC share the audio clock."></div>
+          <div class="embedded-scroll" tabindex="0" role="region" aria-label="Hardware architecture diagram. Scroll horizontally on small screens."><img class="embedded-flow-image" src="../../assets/images/embedded-anc-signal-flow.svg?v=20261126b" width="1120" height="410" alt="Reference and error INMP441 microphones feed an STM32F446RE running FxLMS with acoustic feedback compensation. Its output passes through a PCM5102 DAC and TDA2030 amplifier to the control loudspeaker. Microphones and DAC share the audio clock."></div>
           <p class="embedded-pan-hint">Scroll diagram horizontally →</p>
         </figure>
         <div class="embedded-description">
@@ -62,11 +62,11 @@
       <section id="controller" class="embedded-controller-section">
         <div class="embedded-section section-shell">
           <div class="section-heading numbered-section-heading"><div class="numbered-heading-label"><p class="eyebrow">Controller implementation</p><span aria-hidden="true">03</span></div><h2>Adaptive filtering in C</h2></div>
-          <p class="embedded-description">The time-domain FxLMS controller combines three filters. W generates the control signal; G models the secondary path for adaptation; and F compensates for sound from the control loudspeaker reaching the reference microphone.</p>
+          <p class="embedded-description">The time-domain FxLMS controller combines three filters. W generates the control signal. G models the secondary path for adaptation, and F compensates for sound from the control loudspeaker reaching the reference microphone.</p>
           <dl class="embedded-filter-roles">
-            <div><dt>W · Controller</dt><dd>Filters the reference and adapts through direct block correlation with the error.</dd></div>
-            <div><dt>G · Secondary path</dt><dd>Uses the CMSIS-DSP FIR implementation to produce the filtered reference for adaptation.</dd></div>
-            <div><dt>F · Feedback path</dt><dd>Estimates the loudspeaker’s contribution at REF so it can be removed from the reference signal.</dd></div>
+            <div><dt><span class="embedded-filter-symbol">W</span><span>Adaptive controller</span></dt><dd>Filters the reference and adapts through direct block correlation with the error.</dd></div>
+            <div><dt><span class="embedded-filter-symbol">G</span><span>Secondary path</span></dt><dd>Uses the CMSIS-DSP FIR implementation to produce the filtered reference for adaptation.</dd></div>
+            <div><dt><span class="embedded-filter-symbol">F</span><span>Feedback compensation</span></dt><dd>Estimates the loudspeaker’s contribution at REF so it can be removed from the reference signal.</dd></div>
           </dl>
           <div class="embedded-rate-summary" aria-label="Audio processing rates">
             <div><strong>Audio input · 48 kHz</strong><span>PCM24 → float → antialias filter → decimation ÷6</span></div>
@@ -75,7 +75,7 @@
             <span class="embedded-rate-arrow" aria-hidden="true">→</span>
             <div><strong>Audio output · 48 kHz</strong><span>Interpolation ×6 → reconstruction filter → PCM24</span></div>
           </div>
-          <div class="embedded-description">
+          <div class="embedded-controller-notes">
             <p>Sample-rate conversion reduces the controller’s processing cost while keeping the audio interfaces at 48 kHz. Chebyshev II low-pass filters use cascaded biquads with independent states for the two microphones and the output.</p>
             <p>The acoustic models come from REW measurements with a loopback timing reference. Their conversion to 8 kHz includes the firmware’s conversion filters, preserving timing and polarity and correcting for the measurement gain scale.</p>
           </div>
@@ -90,7 +90,6 @@
               <h3>Implemented and tested</h3>
               <p>Sample-rate conversion, the time-domain controller, and measured-model loading are implemented. The converter passed numerical validation, and basic DAC and both microphone passthrough tests worked in hardware. The firmware builds in Debug and Release.</p>
               <p>The G64/F512/W576 candidate reached an observed maximum calculation time of <strong>0.888 ms against a 1 ms budget</strong>, including conversion, across 256 benchmark blocks on the STM32 with <code>-O3</code>.</p>
-              <p class="embedded-benchmark-note">That isolated test used synthetic coefficients, masked interrupts, and inactive audio/DMA. It establishes a processing candidate; the measured time is neither total system latency nor a formal worst-case guarantee.</p>
             </div>
             <div class="embedded-next">
               <p class="eyebrow">Work in progress</p><h3>Testing the complete system</h3>
